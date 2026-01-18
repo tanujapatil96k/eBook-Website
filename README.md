@@ -1,6 +1,6 @@
 # eBook-Website
 
-The website name is ###The Readers Choice### and below is logo of eBook website
+The website name is THE READERS CHOICE and below is logo of eBook website
 
 ![image](https://github.com/tanujapatil96k/eBook-Website/blob/main/logo.jpg.png)
 
