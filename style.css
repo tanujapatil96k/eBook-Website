@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 body {
     margin: 0;
 }
@@ -336,7 +336,7 @@ footer {
     text-align: center;
     position: relative;
 }
-=======
+
 body {
     margin: 0;
     padding-top: 70px; /* To account for fixed navbar */
@@ -856,4 +856,4 @@ footer {
     text-align: center;
     position: relative;
 }
->>>>>>> 876a054 (Initial commit)
+

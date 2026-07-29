@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -207,7 +207,7 @@ hr {
     width: 100%;
     margin: 10px 0;
   }
-=======
+}
 body {
   margin: 0;
   padding-top: 70px; /* To account for fixed navbar */
@@ -469,5 +469,5 @@ hr {
     width: 100%;
     margin: 10px 0;
   }
->>>>>>> 876a054 (Initial commit)
+
 }
