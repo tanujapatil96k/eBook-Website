@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
 }
@@ -335,3 +336,524 @@ footer {
     text-align: center;
     position: relative;
 }
+=======
+body {
+    margin: 0;
+    padding-top: 70px; /* To account for fixed navbar */
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(60, 174, 197);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 25px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px; /* Adjust based on your logo's aspect ratio */
+  width: auto;
+}
+
+/* Keep your existing nav-right styles */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    flex-wrap: nowrap; /* 🔥 हे नवीन जोडा ( Create Account खाली पडणार नाही ) */
+}
+
+.nav-right li a {
+    white-space: nowrap; /* 🔥 हे नवीन जोडा ( मजकूर तुटणार नाही ) */
+}
+
+/* .nav-search {
+    display: flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 20px !important;
+  } */
+  
+  /* Search Bar ची Height, Shape आणि Perfect Width */
+.nav-search {
+    width: 250px !important;            /* "Search Books & More..." पूर्ण दिसण्यासाठी रुंदी */
+    height: 38px !important;           /* सर्च बारची सुटसुटीत उंची (Height) */
+    display: flex !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    border-radius: 20px !important;     /* सुंदर Round Shape (Pill shape) */
+    padding: 0 12px !important;
+    border: 1px solid #ccc !important;
+    margin-left: 15px !important;      /* Create Account पासून अंतर */
+}
+
+/* इनपुट बॉक्सची आतील सेटिंग */
+.nav-search .search-input {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    padding-bottom: 0 !important; /* 🔥 ही १ ओळ जोडा, टेक्स्ट लगेच vertical center ला येईल */
+}
+
+ /* आयकॉन सुटसुटीत दिसण्यासाठी */
+.nav-search .search-icons {
+    cursor: pointer;
+    color: #555 !important;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* .search-input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+  }
+  
+  .search-icons {
+    margin-left: -25px;
+    cursor: pointer;
+    align-items: center;
+
+  } */
+
+  .nav-cart {
+    color: white;
+    font-size: 1.5em;
+    padding: 0 0px;
+    cursor: pointer;
+  }
+
+  /* १. Navbar च्या Container साठी */
+/* .navbar, header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px; /* घटकांमधील सुटसुटीत अंतर */
+    /* padding: 10px 20px; */
+/* } */ 
+
+/* २. Search Bar ची मेन Container (ही मधली सर्व जागा व्यापेल) */
+/* २. Search Bar ची मेन Container */
+/* .search-container, .nav-search { */
+    /* flex-grow: 1;             Create Account ते Cart Icon मधील सर्व रिकामी जागा व्यापेल */
+    /* display: flex; */
+    /* align-items: center; */
+    /* background-color: #fff;   पूर्ण सर्च बार पांढरा दिसेल */
+    /* border-radius: 25px;      इथे सर्च बारला छान Round Shape / Pill Shape मिळेल */
+    /* padding: 2px 8px;       आतील जागेसाठी */
+    /* border: 1px solid #ccc;   बॉर्डर */
+    /* overflow: hidden;         राऊंड कॉर्नर्स व्यवस्थित दिसण्यासाठी */
+    
+    /* margin: 0 15px;           /* 🔥 हे नवीन जोडा ( Create Account आणि Cart पासून अंतर ठेवेल ) */
+    /* box-sizing: border-box;   🔥 हे नवीन जोडा */ 
+/* } */
+
+/* ३. टाईप करण्याची जागा (Input Box) */
+
+  
+  /* Vertical Navigation */
+  .vertical-nav {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    width: 20%;
+    height: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .vertical-nav ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .vertical-nav li {
+    padding: 8px 0;
+  }
+  
+  .vertical-nav a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .vertical-nav a:hover {
+    color: rgb(60, 174, 197);
+  }
+  
+
+/* Featured Authors Section */
+.section-6 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.pepole {
+  width: 45%;
+  display: flex;
+  margin-bottom: 30px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.pepole img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h5 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.info2 {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .pepole {
+      width: 100%;
+      flex-direction: column;
+  }
+  
+  .pepole img {
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+}
+
+.nav-right {
+    text-align: right;
+}
+
+.section-1 {
+    padding: 40px;
+    background-image: url("https://media.istockphoto.com/id/949118068/photo/books.jpg?s=612x612&w=0&k=20&c=1vbRHaA_aOl9tLIy6P2UANqQ27KQ_gSF-BH0sUjQ730=");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 600px;
+}
+
+h1 {
+    font-size: 100px;
+    color: white;
+}
+
+.section-1 p {
+    font-size: 20px;
+    color: white;
+}
+
+.section-2, .section-3, .section-4 {
+    padding: 35px;
+}
+
+.gallery div {
+    display: inline !important;
+}
+
+.section-2 a {
+    text-decoration: none;
+}
+
+.section-2 p {
+    color: black;
+    text-align: center;
+}
+
+div.gallery a:hover {
+    border: 1px solid white;
+}
+
+img {
+    height: 300px;
+    width: 250px;
+}
+
+.btn {
+    display: block;
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.btn:hover {
+   background-color: rgb(31, 199, 106);
+}
+
+li {
+    display: inline;
+    float: left;
+    padding-left: 15px;
+}
+
+li a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: white;
+}
+
+li a:hover {
+   /* background-color: rgb(31, 199, 106);*/
+    color:#ffe66d;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+.view-card {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+    width: 20%;
+    display: inline;
+}
+
+.brand img {
+    height: 175px;
+}
+
+.section-5 {
+    background-color: rgb(224, 219, 219);
+    display: grid;
+    padding: 20px;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin: 6px 0;
+    resize: vertical;
+    width: 100% !important;          /* पूर्ण रुंदी देईल */
+    max-width: 530px !important;     /* First Name च्या बॉक्सएवढी साईझ करेल */
+    display: block !important;       /* ब्लॉक एलिमेंट बनवेल */
+    padding: 10px 12px !important;   /* आतून पॅडिंग समान करेल */
+    margin-bottom: 15px !important;  /* खालचे अंतर समान ठेवेल */
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important; /* साईझ बाहेर जाऊ देणार नाही */
+    font-size: 14px !important;
+}
+
+/* FORCE FIX FOR SUBMIT BUTTON */
+input[type="submit"], 
+button[type="submit"], 
+input[type="button"], 
+.container input[type="submit"] {
+    width: 530px !important;           /* 530px फिक्स साईझ */
+    max-width: 650px !important;
+    display: block !important;
+    padding: 10px 20px !important;
+    background-color: rgb(23, 161, 85)!important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+}
+
+button[type="submit"]:hover {
+    background-color: #04930c !important;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.image-holder1 {
+    border: 1px solid #ccc;
+    transition: transform 200ms ease-out;
+}
+
+.image-holder1:hover {
+    border: 1px solid #777;
+    transform: scale(1.05);
+}
+
+.gallery1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+div.desc {
+    text-align: center;
+    padding: 5px 0;
+}
+
+div.desc p,h3 {
+  margin: 6px 0
+}
+
+div.desc i {
+    float: left;
+    padding-left: 10px;
+    margin-top: 0px;
+    font-size: 22px;          /* आयकॉनची साईझ मोठी करा (गरजेनुसार 20px ते 25px ठेवा) */
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+div.desc button {
+    text-align: center;
+    margin: 0px 10px 5px 0;
+    justify-content: space-between
+}
+
+div.desc button {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: rgb(60, 174, 197);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px; 
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  width: 90%;
+}
+
+.but-buy:hover {
+  background-color: rgb(50, 150, 170);
+}
+
+gallery1 img {
+    height: 250px;
+    width: 200px;
+}
+
+/* --------------------------------------------------
+   Featured Products Hover Effect
+-------------------------------------------------- */
+
+/* १. कार्डवर होव्हर इफेक्ट (Card Hover Effect) */
+.image-holder {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* इफेक्ट मऊ/स्मूथ चालण्यासाठी */
+}
+
+.image-holder:hover {
+    transform: translateY(-8px); /* कार्ड ८ पिक्सेल वर उचलले जाईल */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* कार्डच्या मागे छान सावली/शॅडो येईल */
+}
+
+/* २. फोटोवर होव्हर इफेक्ट (Image Zoom Effect) */
+.image-holder img {
+    transition: transform 0.3s ease;
+}
+
+.image-holder:hover img {
+    transform: scale(1.05); /* माऊस नेल्यावर फोटो हलकासा झूम होईल */
+}
+
+/* ३. कार्ट बटण होव्हर (Button Hover Effect) */
+.buy-btn {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-btn:hover {
+    background-color: rgb(50, 150, 170); /* बटणाचा रंग निळा/आकर्षक होईल */
+    transform: scale(1.02);
+}
+
+
+/* --------------------------------------------------
+   Responsive Design for Mobile (तुम्ही दिलेल्या मीडिया क्वेरीनुसार)
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .pepole {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .pepole img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    /* मोबाईलवर लेआउट व्यवस्थित दिसण्यासाठी */
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+}
+
+footer {
+    text-align: center;
+    position: relative;
+}
+>>>>>>> 876a054 (Initial commit)

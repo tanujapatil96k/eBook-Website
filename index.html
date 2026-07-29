@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,4 +203,558 @@
             <a href="mail to:tanujapatil96k@gmail.com">tanujapatil96k@gmail.com</a></p>
     </footer>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Book Zone</title>
+    
+    <style>
+        /* Cart Icon & Badge Styling */
+        .nav-cart {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+        
+        .nav-cart a {
+            color: #ffffff !important;
+            font-size: 1.4rem;
+            text-decoration: none;
+        }
+
+        #cart-count {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            line-height: 1;
+        }
+
+        /* Gallery Card Styling */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .image-holder {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .image-holder img {
+            max-height: 180px;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .book-title {
+            font-size: 1rem;
+            margin: 8px 0 2px 0;
+            color: #333;
+            height: 38px;
+            overflow: hidden;
+        }
+
+        .book-author {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .book-price {
+            font-size: 1.1rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .buy-btn {
+            background-color: rgb(60, 174, 197);;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: rgb(50, 150, 170);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.jpg.png" alt="THE READERS CHOICE Logo" class="logo-img"></a>
+        </div>
+        <div class="nav-right">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="new_arrival.html">New Arrival</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="Register.html">Create Account</a></li>
+        </div>
+        <div class="nav-search">
+            <input type="text" id="textid" class="search-input" placeholder="Search Books & More...">
+            <div class="search-icons">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+         </div>
+         
+         <!-- Cart Icon -->
+         <div class="nav-cart">
+            <a href="cart.html" title="View Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="section-1">
+        <div class="Section-1-text">
+            <center>
+                <h1>Welcome to The Readers Choice</h1>
+                <p>You can find out yours book here.</p>
+                <a href="products.html" class="btn">Explore Here  <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+            </center>
+        </div>
+    </div>
+
+    <div class="section-2">
+        <h2>Featured Products</h2>
+        <div class="gallery">
+            <!-- 1 -->
+            <div class="image-holder">
+                <a href="#"><img src="images/Pirates from Piperock.jpg" alt="Featured Book 1"></a>
+                <h3 class="book-title">Pirates from Piperock</h3>
+                <p class="book-author">W. C. Tuttle</p>
+                <p class="book-price">Price : ₹299</p>
+                <button class="buy-btn" onclick="addToCart({title: 'Pirates from Piperock', author: 'W. C. Tuttle', price: 299, image: 'images/Pirates from Piperock.jpg', pdf: 'public/ebooks/Pirates from Piperock _ new.pdf'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 2 -->
+            <div class="image-holder">
+                <a href="#"><img src="images/The Odyssey.jpg" alt="Featured Book 2"></a>
+                <h3 class="book-title">The Odyssey</h3>
+                <p class="book-author">Homer</p>
+                <p class="book-price">Price : ₹349</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The Odyssey', author: 'Homer', price: 349, image: 'images/The Odyssey.jpg', pdf: 'public/ebooks/The Odyssey_new.pdf'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 3 -->
+            <div class="image-holder">
+                <a href="#"><img src="images/Crime and Punishment.jpg" alt="Featured Book 3"></a>
+                <h3 class="book-title">Crime and Punishment</h3>
+                <p class="book-author">Fyodor Dostoyevsky</p>
+                <p class="book-price">Price : ₹199</p>
+                <button class="buy-btn" onclick="addToCart({title: 'Crime and Punishment', author: 'Fyodor Dostoyevsky', price: 199, image: 'images/Crime and Punishment.jpg', pdf: 'public/ebooks/Crime and Punishment _ new.pdf'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 4 -->
+            <div class="image-holder">
+                <a href="#"><img src="images/Pride and prejudice.jpg" alt="Featured Book 4"></a>
+                <h3 class="book-title">Pride and Prejudice</h3>
+                <p class="book-author">Jane Austen</p>
+                <p class="book-price">Price : ₹250</p>
+                <button class="buy-btn" onclick="addToCart({title: 'Pride and Prejudice', author: 'Jane Austen', price: 250, image: 'images/Pride and prejudice.jpg', pdf: 'public/ebooks/Pride and prejudice _ new.pdf'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 5 -->
+            <div class="image-holder">
+                <a href="#"><img src="images/The Blue Castle.jpg" alt="Featured Book 5"></a>
+                <h3 class="book-title">The Blue Castle</h3>
+                <p class="book-author">L. M. Montgomery</p>
+                <p class="book-price">Price : ₹399</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The Blue Castle', author: 'L. M. Montgomery', price: 399, image: 'images/The Blue Castle.jpg', pdf: 'public/ebooks/The Blue Castle _new.pdf'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 6 -->
+            <div class="image-holder">
+                <a href="#"><img src="img_4.jpg" alt="Featured Book 6"></a>
+                <h3 class="book-title">Heart of the Few</h3>
+                <p class="book-author">Jon Duncan</p>
+                <p class="book-price">Price : ₹280</p>
+                <button class="buy-btn" onclick="addToCart({title: 'Heart of the Few', author: 'Jon Duncan', price: 280, image: 'img_4.jpg', pdf:' '})">🛒 Add to Cart</button>
+            </div>
+            <!-- 7 -->
+            <div class="image-holder">
+                <a href="#"><img src="img1.jpg" alt="Featured Book 7"></a>
+                <h3 class="book-title">The Time Machine</h3>
+                <p class="book-author">H.G. Wells</p>
+                <p class="book-price">Price : ₹220</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The Time Machine', author: 'H.G. Wells', price: 220, image: 'img1.jpg', pdf:' '})">🛒 Add to Cart</button>
+            </div>
+            <!-- 8 -->
+            <div class="image-holder">
+                <a href="#"><img src="img_8.jpg" alt="Featured Book 8"></a>
+                <h3 class="book-title">Solar Bones</h3>
+                <p class="book-author">Mike McCormack</p>
+                <p class="book-price">Price : ₹150</p>
+                <button class="buy-btn" onclick="addToCart({title: 'Solar Bones', author: 'Mike McCormack', price: 150, image: 'img_8.jpg',})">🛒 Add to Cart</button>
+            </div>
+            <!-- 9 -->
+            <div class="image-holder">
+                <a href="#"><img src="img_9.jpg" alt="Featured Book 9"></a>
+                <h3 class="book-title">The House on the Lake</h3>
+                <p class="book-author">Nuala Ellwood</p>
+                <p class="book-price">Price : ₹310</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The House on the Lake', author: 'Nuala Ellwood', price: 310, image: 'img_9.jpg'})">🛒 Add to Cart</button>
+            </div>
+            <!-- 10 -->
+            <div class="image-holder">
+                <a href="#"><img src="img_10.jpg" alt="Featured Book 10"></a>
+                <h3 class="book-title">The Girl in the Letter</h3>
+                <p class="book-author">Emily Gunnis</p>
+                <p class="book-price">Price : ₹275</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The Girl in the Letter', author: 'Emily Gunnis', price: 275, image: 'img_10.jpg'})">🛒 Add to Cart</button>
+            </div>
+            <!--11-->
+             <div class="image-holder">
+                <a href="#"><img src="img.jpg" alt="Featured Book 10"></a>
+                <h3 class="book-title">The art of not Overthinking</h3>
+                <p class="book-author">Shaurya Kapoor</p>
+                <p class="book-price">Price : ₹275</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The art of not Overthinking', author: 'Shaurya Kapoor', price: 275, image: 'img.jpg'})">🛒 Add to Cart</button>
+            </div>
+            <!--12-->
+             <div class="image-holder">
+                <a href="#"><img src="img2.jpg" alt="Featured Book 10"></a>
+                <h3 class="book-title">The Invisible Man</h3>
+                <p class="book-author">H.G. Wells</p>
+                <p class="book-price">Price : ₹275</p>
+                <button class="buy-btn" onclick="addToCart({title: 'The Invisible Man', author: 'H.G. Wells', price: 275, image: 'img2.jpg'})">🛒 Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-4">
+        <h2>Featured Brands</h2>
+        <div class="brand"><img src="book_logo1.png" alt=""></div>
+        <div class="brand"><img src="book_logo_6.png" alt=""></div>
+        <div class="brand"><img src="book_logo3.png" alt=""></div>
+        <div class="brand"><img src="book_logo_4.png" alt=""></div>
+        <div class="brand"><img src="book_logo_5.png" alt=""></div>
+    </div>
+
+    <div>
+        <h2 style="margin-left: 30px;">Featured Authors</h2>
+         <ul class="section-6">
+            <li class="pepole">
+                <img src="au1.jpg" alt="">
+                <div class="info">
+                    <h5>Arundhati Roy</h5>
+                    <p class="info2">Arundhati Roy is an Indian writer, best known for her book The God of Small Things (1997)...</p>
+                </div>
+            </li>
+            <li class="pepole">
+                <img src="au2.jpg" alt="">
+                <div class="info">
+                    <h5>William Wordsworth</h5>
+                    <p class="info2">On April 7, 1770, William Wordsworth was conceived in Cockermouth, Cumbria, England...</p>
+                </div>
+            </li>
+            <li class="pepole">
+                <img src="au3.jpg" alt="">
+                <div class="info">
+                    <h5>Gayle Forman</h5>
+                    <p class="info2">Gayle Forman is an American young adult fiction author. She was born in June 5, 1978...</p>
+                </div>
+            </li>
+            <li class="pepole">
+                <img src="au4.jpg" alt="">
+                <div class="info">
+                    <h5>Paulo Coelho</h5>
+                    <p class="info2">Paulo Coelho is irrefutably of the best writers of late circumstances...</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div class="section-5">
+        <h2>Contact Us</h2>
+        <p>leave us a message or suggestion:</p>
+        <div class="column">
+            <form id="contact-form">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Your name.." required>
+                
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Your last name.." required>
+                
+                <label for="country">Country</label>
+                <select id="country">
+                    <option value="india">India</option>
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                </select>
+                
+                <label for="subject">Subject</label>
+                <textarea id="subject" placeholder="Write something.." style="height:120px" required></textarea>
+                
+                <button type="submit" style="padding: 12px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; width: 100%; font-weight: bold;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy Copyright 2025, All rights are reserved </p>
+        <a href="mailto:tanujapatil96k@gmail.com">tanujapatil96k@gmail.com</a>
+    </footer>
+
+<script>
+// १. कार्ट काउंट अपडेट करणे
+let cart = JSON.parse(localStorage.getItem('bookCart')) || [];
+
+function updateCartCount() {
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.innerText = cart.length;
+    }
+}
+
+// २. कार्टमध्ये पुस्तक जोडणे
+function addToCart(book) {
+    cart.push(book);
+    localStorage.setItem('bookCart', JSON.stringify(cart));
+    updateCartCount();
+    alert(`📚 "${book.title}" हे पुस्तक कार्टमध्ये जोडले गेले आहे!`);
+}
+
+// ३. बॅकएंडवरून पुस्तके फेच करणे (बॅकएंड चालू असल्यास ते जुन्या बुक्सची जागा घेईल)
+async function fetchBooks() {
+    try {
+        const response = await fetch('http://localhost:5000/api/books/all');
+        const data = await response.json();
+        
+    /*  if (data.success && data.books.length > 0) {
+            const books = data.books;
+            const galleryContainer = document.querySelector('.gallery'); 
+            
+            if (galleryContainer) {
+                galleryContainer.innerHTML = '';
+
+                books.forEach(book => {
+                    const bookDiv = document.createElement('div');
+                    bookDiv.className = 'image-holder';
+
+                    const bookImgSrc = book.image || 'img1.jpg';
+                    const bookData = JSON.stringify(book).replace(/'/g, "&apos;");
+
+                    bookDiv.innerHTML = `
+                        <a href="#"><img src="${bookImgSrc}" alt="${book.title}" onerror="this.src='img1.jpg';"></a>
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">By: ${book.author}</p>
+                        <p class="book-price">₹${book.price}</p>
+                        <button class="buy-btn" onclick='addToCart(${bookData})'>🛒 Add to Cart</button>
+                    `;
+                    galleryContainer.appendChild(bookDiv);
+                });
+            }
+        }*/
+    } catch (error) {
+        console.log("बॅकएंड कनेक्ट नसले तरी HTML मधील बुक्स दिसतील.");
+    }
+}
+
+// ४. DOM Content Loaded
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    fetchBooks();
+
+    // लॉगिन युझर चेक करा
+    const loggedInUser = JSON.parse(localStorage.getItem('user'));
+    const navRight = document.querySelector('.nav-right');
+    if (loggedInUser && navRight) {
+        navRight.innerHTML = `
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="new_arrival.html">New Arrival</a></li>
+            <li style="color: white; padding: 5px 10px; list-style: none; display: inline-block; align-items: center;">👤${loggedInUser.username}</li>
+            <li><a href="#" id="logout-btn" title="Logout" style="color: #ff4d4d;">Logout</a></li>
+        `;
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('user');
+            alert("तुम्ही यशस्वीरित्या लॉगआउट झाला आहात! 👋");
+            window.location.reload();
+        });
+    }
+
+  /*  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('textid');
+    const searchIcon = document.querySelector('.search-icons');
+
+    function performSearch() {
+        const filterValue = searchInput.value.toLowerCase().trim();
+        
+        // १. कार्ड चा फिक्स क्लास selector (image-holder)
+        const cards = document.querySelectorAll('.image-holder');
+
+        cards.forEach(card => {
+            // २. पुस्तकाचे नाव (book-title) आणि लेखक (book-author) दोन्ही शोधा
+            const titleElement = card.querySelector('.book-title');
+            const authorElement = card.querySelector('.book-author');
+            
+            let cardText = '';
+            if (titleElement) cardText += titleElement.textContent.toLowerCase() + ' ';
+            if (authorElement) cardText += authorElement.textContent.toLowerCase();
+
+            // ३. सर्च व्हॅल्यू जुळली तर दाखवा नाहीतर लपवा
+            if (filterValue === '' || cardText.includes(filterValue)) {
+                card.style.display = 'inline-block'; // किंवा flex/block जशी तुमची CSS रचना असेल
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // १. टाईप करताना रिअल-टाईम सर्च (Input/Keyup)
+    if (searchInput) {
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keyup', performSearch);
+    }
+
+    // २. सर्च आयकॉन वर क्लिक केल्यास
+    if (searchIcon) {
+        searchIcon.addEventListener('click', performSearch);
+    }
+});
+
+// URL मधील 'search' पॅरामीटर वाचून ऑटोमॅटिक फिल्टर करणे
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+
+    if (searchQuery && searchInput) {
+        searchInput.value = searchQuery; // सर्च बारमध्ये टाईप केलेला शब्द टाका
+        performSearch();                  // सर्च फंक्शन लगेच रन करा
+    }*/
+
+
+    // 🔍 Global Smart Search Logic
+    /* const searchInput = document.getElementById('textid');
+    const searchIcon = document.querySelector('.search-icons');
+
+    function performGlobalSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        
+        if (query !== "") {
+            if (query.includes('new') || query.includes('arrival')) {
+                window.location.href = `new_arrival.html?search=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = `products.html?search=${encodeURIComponent(query)}`;
+            }
+        }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                performGlobalSearch();
+            }
+        });
+    }
+
+    if (searchIcon) {
+        searchIcon.addEventListener('click', performGlobalSearch);
+    }*/
+
+   // 🔍 Live Search Logic for Home Page (Fixed)
+    const searchInput = document.getElementById('textid');
+    const searchIcon = document.querySelector('.search-icons');
+
+    function performHomeSearch() {
+        if (!searchInput) return;
+        const query = searchInput.value.toLowerCase().trim();
+        const bookCards = document.querySelectorAll('.gallery .image-holder');
+
+        bookCards.forEach(card => {
+            const title = card.querySelector('.book-title')?.innerText.toLowerCase() || '';
+            const author = card.querySelector('.book-author')?.innerText.toLowerCase() || '';
+
+            if (title.includes(query) || author.includes(query)) {
+                card.style.setProperty('display', 'flex', 'important'); // 🔥 CSS Override फिक्स करण्यासाठी
+            } else {
+                card.style.setProperty('display', 'none', 'important');
+            }
+        });
+    }
+
+    if (searchInput) {
+        // टाईप करताना रिअल-टाईम फिल्टर होईल
+        searchInput.addEventListener('input', performHomeSearch);
+        
+        // Enter की दाबल्यावर पण काम करेल
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performHomeSearch();
+            }
+        });
+    }
+
+    // सर्च आयकॉनवर क्लिक केल्यावर सर्च होईल
+    if (searchIcon) {
+        searchIcon.addEventListener('click', performHomeSearch);
+    }
+
+    // Contact Form सबमिट
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstname = document.getElementById('fname').value.trim();
+            const lastname = document.getElementById('lname').value.trim();
+            const country = document.getElementById('country').value;
+            const subject = document.getElementById('subject').value.trim();
+
+            try {
+                const response = await fetch('http://localhost:5000/api/contact/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstname, lastname, country, subject })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert("🎉 " + data.message);
+                    contactForm.reset();
+                } else {
+                    alert("❌ अडचण आली: " + data.message);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("सर्व्हरशी संपर्क झाला नाही! नोड सर्व्हर सुरू आहे ना ते तपासा.");
+            }
+        });
+    }
+});
+</script>
+</body>
+>>>>>>> 876a054 (Initial commit)
 </html>

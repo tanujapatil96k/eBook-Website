@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -225,3 +226,350 @@ html {
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us - Book Zone</title>
+
+<!-- FontAwesome Icons for Search & Cart -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif; 
+  padding-top: 80px; /* Navbar मुळे कंटेंट झाकला जाऊ नये म्हणून padding */
+}
+
+/* Navbar CSS */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(60, 174, 197);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 25px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.nav-right {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 6px;
+}
+
+.nav-right li {
+  display: inline;
+}
+
+.nav-right li a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+}
+
+.nav-right li a:hover {
+  color:#ffe66d;
+}
+
+
+/* Search Bar ची Height, Shape आणि Perfect Width */
+.nav-search {
+    width: 260px !important;            /* "Search Books & More..." पूर्ण दिसण्यासाठी रुंदी */
+    height: 38px !important;           /* सर्च बारची सुटसुटीत उंची (Height) */
+    display: flex !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    border-radius: 20px !important;     /* सुंदर Round Shape (Pill shape) */
+    padding: 0 12px !important;
+    border: 1px solid #ccc !important;
+    margin-left: 15px !important;      /* Create Account पासून अंतर */
+}
+
+/* इनपुट बॉक्सची आतील सेटिंग */
+.nav-search .search-input {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    color: #333 !important;
+}
+
+/* आयकॉन सुटसुटीत दिसण्यासाठी */
+.nav-search .search-icons {
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* Search Bar CSS */
+.nav-search {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.search-input {
+  border: none;
+  padding: 5px;
+  /*font-size: 14px;*/
+}
+
+.search-icons {
+  color: #0d0000;
+  margin-left: -25px;
+  cursor: pointer;
+}
+
+/* Nav Cart & Badge CSS */
+.nav-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.nav-cart a {
+  color: white !important;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+#cart-count {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  line-height: 1;
+}
+
+/* About Section & Cards CSS */
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px auto;
+  max-width: 300px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.container {
+  padding: 16px;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* १. कार्डवर होव्हर इफेक्ट (Card Hover Effect) */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* इफेक्ट मऊ/स्मूथ चालण्यासाठी */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* कार्ड ८ पिक्सेल वर उचलले जाईल */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* कार्डच्या मागे छान सावली/शॅडो येईल */
+}
+
+/* २. फोटोवर होव्हर इफेक्ट (Image Zoom Effect) */
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05); /* माऊस नेल्यावर फोटो हलकासा झूम होईल */
+}
+</style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo-container">
+        <a href="index.html"><img src="logo.jpg.png" alt="THE READERS CHOICE Logo" class="logo-img" onerror="this.style.display='none';"></a>
+    </div>
+    <ul class="nav-right">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="About.html" class="active">About</a></li>
+        <li><a href="new_arrival.html">New Arrival</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="Register.html">Create Account</a></li>
+    </ul>
+
+    <div class="nav-search">
+      <input type="text" id="textid" class="search-input" placeholder="Search Books & More...">
+      <div class="search-icons">
+           <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+
+    <div class="nav-cart">
+      <a href="cart.html" title="View Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <div class="about-section">
+    <h1>About Us</h1>
+    <p>Readers Choice provides an easy interface to its customers for purchasing books online.</p>
+    <p>
+        Whether you are looking for timeless classics, modern bestsellers, or the latest <strong>New Arrivals</strong>, Readers Choice offers a wide variety of eBooks for every kind of reader. We aim to enrich your reading journey and deliver a great shopping experience right to your doorstep.
+    </p>
+    <p>For any query, leave a comment in the Home page comment section. You can also send us an email or call us on weekdays.<br>
+    Thank you for your patience and hope you have a great shopping experience here.</p>
+  </div>
+
+  <h2 style="text-align:center; margin-top: 30px;">Our Team</h2>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="p1.jfif" alt="Tanuja" onerror="this.src='https://via.placeholder.com/300x250?text=Profile+Image';">
+        <div class="container">
+          <h2>Tanuja</h2>
+          <p class="title">CEO & Founder</p>
+          <p class="bio">Passionate about making reading accessible to everyone. Driving innovation to build the ultimate platform for book lovers.</p>
+          <p><strong>Contact No. :</strong> 0000000000</p>
+          <p><strong>Email Id :</strong> tanuja@example.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="p2.jfif" alt="Abc" onerror="this.src='https://via.placeholder.com/300x250?text=Profile+Image';">
+        <div class="container">
+          <h2>Abc</h2>
+          <p class="title">Lead Developer</p>
+          <p class="bio">Managing the technical architecture and platform performance. Passionate about creating a fast, secure, and seamless shopping experience for our users.</p>
+          <p><strong>Contact No. :</strong> 1212121212</p>
+          <p><strong>Email Id :</strong> Abc@example.com</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        <img src="p3.jfif" alt="Xyz" onerror="this.src='https://via.placeholder.com/300x250?text=Profile+Image';">
+        <div class="container">
+          <h2>Xyz</h2>
+          <p class="title">Designer</p>
+          <p class="bio">Crafting visually engaging layouts and user-friendly interfaces. Dedicated to making every interaction on Readers Choice seamless and enjoyable.</p>
+          <p><strong>Contact No. :</strong> 1111111111</p>
+          <p><strong>Email Id :</strong> xyz@example.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Count Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('bookCart')) || [];
+      const cartCountElement = document.getElementById('cart-count');
+      if (cartCountElement) {
+        cartCountElement.innerText = cart.length;
+      }
+    });
+  </script>
+
+</body>
+</html>
+>>>>>>> 876a054 (Initial commit)

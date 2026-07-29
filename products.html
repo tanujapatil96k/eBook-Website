@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -589,4 +590,607 @@
 
     </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="https://use.fontawesome.com/be1ba39dfe.js"></script> 
+        <link rel="stylesheet" href="product_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Book Zone</title>
+        <style>
+            /* Nav Cart & Badge CSS Fix */
+            .nav-cart {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-left: 15px;
+            }
+            .nav-cart a {
+                color: white !important;
+                font-size: 1.4rem;
+                text-decoration: none;
+            }
+            #cart-count {
+                background-color: #e74c3c;
+                color: white;
+                font-size: 0.75rem;
+                font-weight: bold;
+                padding: 2px 6px;
+                border-radius: 50%;
+                position: absolute;
+                top: -8px;
+                right: -10px;
+                line-height: 1;
+            }
+            .desc i.fa-shopping-cart {
+                cursor: pointer;
+                font-size: 1.2rem;
+                margin-right: 8px;
+                color: #333;
+                transition: transform 0.2s;
+            }
+            .desc i.fa-shopping-cart:hover {
+                transform: scale(1.2);
+                color: #27ae60;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="index.html"><img src="logo.jpg.png" alt="THE READERS CHOICE Logo" class="logo-img"></a>
+            </div>
+            <div class="nav-right">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="new_arrival.html">New Arrival</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="Register.html">Create Account</a></li>
+            </div>
+
+            <div class="nav-search">
+                <input type="text" id="textid" class="search-input" placeholder="Search Books & More...">
+                <div class="search-icons">
+                     <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            
+            <!-- Dynamic Cart Icon & Badge Fix -->
+            <div class="nav-cart">
+                <a href="cart.html" title="View Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="section-body">
+            <div class="vertical-nav">
+                <ul>
+                    <h4>Category</h4>
+                    <li><a href="#Adventure">Adventure</a></li>
+                    <li><a href="#Biography">Biography</a></li>
+                    <li><a href="#Romantic">Romantic</a></li>
+                    <li><a href="#Comics">Comics</a></li>
+                    <li><a href="#Business">Business & Finance</a></li>
+                </ul>
+            </div>
+
+            <div class="gallery-main" style="margin-left:25%;padding:1px 16px;height:auto;">
+                
+                <!-- Adventure -->
+                <div class="Adventure" id="Adventure">
+                    <h2>Adventure</h2>
+
+                    <div class="gallery">
+                        <div class="image-holder">
+                            <a href="#"><img src="images/kidnapped.jpg" alt="img-1"></a>
+                            <div class="desc">
+                                <h3 class="book-title">Kidnapped</h3>
+                                <p class="book-author">Robert Louis Stevenson</p>
+                                <p class="book-price">Price : ₹200</p>
+                               <button class="buy-btn"  onclick="addToCart('Kidnapped', 250, 'img1.jpg', 'public/ebooks/Kidnapped.pdf')">🛒 Add to Cart</button> 
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="images/The Count of Monte Cristo.jpg" alt="img-2"></a>
+                            <div class="desc">
+                                <h3 class="book-title">The Count of Monte Cristo</h3>
+                                <p class="book-author">Alexandre Dumas</p>
+                                <p class="book-price">Price : ₹200</p>
+                               <button class="buy-btn"  onclick="addToCart('The Count of Monte Cristo', 200, 'images/The Count of Monte Cristo.jpg', 'public/ebooks/The Count of Monte Cristo _ adventure.pdf')">🛒 Add to Cart</button> 
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="images/Twenty Years After.jpg" alt="img-3"></a>
+                            <div class="desc">
+                               <h3 class="book-title">Twenty years after</h3>
+                                <p class="book-author">Auguste Maquet</p>
+                                <p class="book-price">Price : ₹180</p>
+                               <button class="buy-btn"  onclick="addToCart('Twenty years after', 180, 'images/Twenty Years After.jpg', 'public/ebooks/Twenty Years After _ adventure.pdf')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="ad4.jpg" alt="img-4"></a>
+                            <div class="desc">
+                                <h3 class="book-title">The wind on Haunted Hill</h3>
+                                <p class="book-author">Ruskin Bond</p>
+                                <p class="book-price">Price : ₹100</p>
+                               <button class="buy-btn"  onclick="addToCart('The wind on Haunted Hill', 100, 'ad4.jpg', ' ')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="ad5.jpg" alt="img-5"></a>
+                            <div class="desc">
+                                <h3 class="book-title">The Adventure of the Wishing Chair</h3>
+                                <p class="book-author">Ruskin Bond</p>
+                                <p class="book-price">Price : ₹390</p>
+                                <button class="buy-btn"  onclick="addToCart('The Adventure of the Wishing Chair', 390, 'ad5.jpg', ' ')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="ad6.jpg" alt="img-6"></a>
+                            <div class="desc">
+                                <h3 class="book-title">The complete novel of Sherlock Homes</h3>
+                                <p class="book-author">Sir Arthur Conan Doyle</p>
+                                <p class="book-price">Price : ₹100</p>
+                                <button class="buy-btn"  onclick="addToCart('Sherlock HOmeshair', 100, 'ad6.jpg', ' ')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="ad7.jpg" alt="img-7"></a>
+                            <div class="desc">
+                                <h3 class="book-title">Nectar on the Seven Hills</h3>
+                                <p class="book-author">Prabhu Ram</p>
+                                <p class="book-price">Price : ₹304</p>
+                                <button class="buy-btn"  onclick="addToCart('Nectar on the Seven Hills', 304, 'ad7.jpg', ' ')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="image-holder">
+                            <a href="#"><img src="ad8.jpg" alt="img-8"></a>
+                            <div class="desc">
+                                <h3 class="book-title">Around the World in Eighty Days</h3>
+                                <p class="book-author">Jules Verne</p>
+                                <p class="book-price">Price : ₹340</p>
+                                <button class="buy-btn"  onclick="addToCart('Around the World in Eighty Days', 340, 'ad8.jpg', ' ')">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+                    </div><br><hr>
+
+                    <!-- Biography -->
+                    <div class="Biography" id="Biography">
+                        <h2>Biography</h2>
+
+                        <div class="gallery">
+                            <div class="image-holder">
+                                <a href="#"><img src="images/fifty_years_in_street_wall.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Fifty Years in Street Wall</h3>
+                                    <p class="book-author">Henry Clews</p>
+                                    <p class="book-price">Price : ₹120</p>
+                                    <button class="buy-btn"  onclick="addToCart('Fifty Years in Street Wall', 120, 'images/fifty_years_in_street_wall.jpg','public/ebooks/Fifty Years in Street Wall.pdf')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                            <div class="image-holder">
+                                <a href="#"><img src="images/labrador_doctor_biography.jpg" alt="img-2"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">A Labrador Doctor</h3>
+                                    <p class="book-author">Sir Wilfred Thomason Grenfell</p>
+                                    <p class="book-price">Price : ₹220</p>
+                                    <button class="buy-btn"  onclick="addToCart('A Labrador Doctor', 220, 'images/labrador_doctor_biography.jpg','public/ebooks/labrador_doctor_biography.pdf')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                            <div class="image-holder">
+                                <a href="#"><img src="images/The King in Yellow.jpg" alt="img-3"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">The King in Yellow</h3>
+                                    <p class="book-author">Robert W. Chambers</p>
+                                    <p class="book-price">Price : ₹250</p>
+                                    <button class="buy-btn"  onclick="addToCart('The King in Yellow', 250, 'images/The King in Yellow.jpg',' ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                             <div class="image-holder">
+                                <a href="#"><img src="b7.jpg" alt="img-3"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Elon Musk</h3>
+                                    <p class="book-author">Walter Issacson</p>
+                                    <p class="book-price">Price : ₹120</p>
+                                    <button class="buy-btn"  onclick="addToCart('Elon Musk', 120, 'b7.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                              <div class="image-holder">
+                                <a href="#"><img src="b8.jpg" alt="img-3"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">I came upon a Lighthouse</h3>
+                                    <p class="book-author">Shantanu Niadu</p>
+                                    <p class="book-price">Price : ₹200</p>
+                                    <button class="buy-btn"  onclick="addToCart('I came upon a Lighthouse', 200, 'b8.jpg',' ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                              <div class="image-holder">
+                                <a href="#"><img src="b1.jpg" alt="img-3"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Can't Hurt ME</h3>
+                                    <p class="book-author">David Goggins</p>
+                                    <p class="book-price">Price : ₹350</p>
+                                    <button class="buy-btn"  onclick="addToCart('Cant Hurt ME', 350, 'b1.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+                        </div><br><hr>
+
+                        <!-- Romantic -->
+                        <div class="Romantic" id="Romantic">
+                            <h2>Romantic</h2>
+                            <div class="gallery">
+                             <div class="image-holder">
+                                <a href="#"><img src="images/Romeo and Juliet _rommance.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Romeo and Juliet</h3>
+                                    <p class="book-author">William Shakespeare</p>
+                                    <p class="book-price">Price : ₹550</p>
+                                    <button class="buy-btn"  onclick="addToCart('Romeo and Juliet', 550, 'images/Romeo and Juliet _rommance.jpg','public/ebooks/The King in Yellow _ boigraphy.pdf')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                                <div class="image-holder">
+                                <a href="#"><img src="images/pirate_rommance.jpg" alt="img-2"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">The Pirate</h3>
+                                    <p class="book-author">Walter Scott</p>
+                                    <p class="book-price">Price : ₹300</p>
+                                    <button class="buy-btn"  onclick="addToCart('The Pirate', 300, 'images/pirate_rommance.jpg','public/ebooks/pirate_rommance.pdf')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                              <div class="image-holder">
+                                <a href="#"><img src="images/carmen.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Carmen</h3>
+                                    <p class="book-author">Prosper Merimee</p>
+                                    <p class="book-price">Price : ₹250</p>
+                                    <button class="buy-btn"  onclick="addToCart('Carmen', 250, 'images/carmen.jpg','public/ebooks/Carmen _rommance.pdf')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                              <div class="image-holder">
+                                <a href="#"><img src="r2.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">I dont't Love you anymore</h3>
+                                    <p class="book-author">Rithvik Singh</p>
+                                    <p class="book-price">Price : ₹400</p>
+                                    <button class="buy-btn"  onclick="addToCart('I dont Love you anymore', 400, 'r2.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                              <div class="image-holder">
+                                <a href="#"><img src="r4.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Can we be Strangers again?</h3>
+                                    <p class="book-author">Shrijeet Shandilya</p>
+                                    <p class="book-price">Price : ₹450</p>
+                                    <button class="buy-btn"  onclick="addToCart('Can we be Strangers again?', 450, 'r4.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                            <div class="image-holder">
+                                <a href="#"><img src="r8.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">Things we never got over</h3>
+                                    <p class="book-author">Lucy Score</p>
+                                    <p class="book-price">Price : ₹290</p>
+                                    <button class="buy-btn"  onclick="addToCart('Things we never got over', 290, 'r8.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+
+                             <div class="image-holder">
+                                <a href="#"><img src="r6.jpg" alt="img-1"></a>
+                                <div class="desc">
+                                    <h3 class="book-title">When I am with You</h3>
+                                    <p class="book-author">Durjoy Datta</p>
+                                    <p class="book-price">Price : ₹370</p>
+                                    <button class="buy-btn"  onclick="addToCart('When I am with You', 370, 'r6.jpg','  ')">🛒 Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                            </div><br><hr>
+
+                            <!-- Comics -->
+                            <div class="Comics" id="Comics">
+                                <h2>Comics</h2>
+                                <div class="gallery">
+                                    <div class="image-holder">
+                                        <a href="#"><img src="images/Short and Sweet.jpg" alt="img-1"></a>
+                                        <div class="desc">
+                                            <h3 class="book-title">Short and Sweet</h3>
+                                            <p class="book-author">Adolphus Charles Troughton</p>
+                                            <p class="book-price">Price : ₹150</p>
+                                            <button class="buy-btn"  onclick="addToCart('Short and Sweet', 150, 'images/Short and Sweet.jpg','public/ebooks/Short and Sweet_comic.pdf')">🛒 Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                     <div class="image-holder">
+                                        <a href="#"><img src="images/Letters and social aims.jpg" alt="img-2"></a>
+                                        <div class="desc">
+                                            <h3 class="book-title">Letters and social aims</h3>
+                                            <p class="book-author">Ralph Waldo Emerson</p>
+                                            <p class="book-price">Price : ₹325</p>
+                                            <button class="buy-btn"  onclick="addToCart('Letters and social aims', 150, 'images/Letters and social aims.jpg','public/ebooks/Letters and social aims_comic.pdf')">🛒 Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                     <div class="image-holder">
+                                        <a href="#"><img src="c4.jpg" alt="img-3"></a>
+                                        <div class="desc">
+                                            <h3 class="book-title">The last Kids on the Earth</h3>
+                                            <p class="book-author">Max Brallier</p>
+                                            <p class="book-price">Price : ₹110</p>
+                                            <button class="buy-btn"  onclick="addToCart('The last Kids on the Earth', 110, 'c4.jpg','  ')">🛒 Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                     <div class="image-holder">
+                                        <a href="#"><img src="images/Where Art Begins.jpg" alt="img-3"></a>
+                                        <div class="desc">
+                                            <h3 class="book-title">Where Art Begins</h3>
+                                            <p class="book-author">Hume Nisbet</p>
+                                            <p class="book-price">Price : ₹210</p>
+                                            <button class="buy-btn"  onclick="addToCart('Where Art Begins', 210, 'images/Where Art Begins.jpg','public/ebooks/Where Art Begins_comic.pdf')">🛒 Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="image-holder">
+                                        <a href="#"><img src="c3.jpg" alt="img-3"></a>
+                                        <div class="desc">
+                                            <h3 class="book-title">Batman</h3>
+                                            <p class="book-author">Dulux edition</p>
+                                            <p class="book-price">Price : ₹150</p>
+                                            <button class="buy-btn"  onclick="addToCart('Batman', 150, 'c3.jpg',' ')">🛒 Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                </div><br><hr>
+
+                                <!-- Business & Finance -->
+                                <div class="Business" id="Business">
+                                    <h2>Business & Finance</h2>
+                                    <div class="gallery">
+                                        <div class="image-holder">
+                                            <a href="#"><img src="images/How to Make Money.jpg" alt="img-1"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">How to Make Money</h3>
+                                            <p class="book-author">John V. Dunlap</p>
+                                            <p class="book-price">Price : ₹1000</p>
+                                            <button class="buy-btn"  onclick="addToCart('How to Make Money', 1000, 'images/How to Make Money.jpg','public/ebooks/How to Make Money_business.pdf')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-holder">
+                                            <a href="#"><img src="images/The Cycles of Speculation.jpg" alt="img-2"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">The cycles of speculation</h3>
+                                            <p class="book-author">Thomas Gibson</p>
+                                            <p class="book-price">Price : ₹500</p>
+                                            <button class="buy-btn"  onclick="addToCart('The cycles of speculation', 500, 'images/The Cycles of Speculation.jpg','public/ebooks/The Cycles of Speculation _businees.pdf')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-holder">
+                                            <a href="#"><img src="images/Manpower.jpg" alt="img-3"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">Manpower</h3>
+                                            <p class="book-author">Lincoln C. Andrews</p>
+                                            <p class="book-price">Price : ₹350</p>
+                                            <button class="buy-btn"  onclick="addToCart('Manpower', 350, 'images/Manpower.jpg','public/ebooks/Manpower_business.pdf')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-holder">
+                                            <a href="#"><img src="bus_4.jpg" alt="img-3"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">Zero to One</h3>
+                                            <p class="book-author">Peter Thiel</p>
+                                            <p class="book-price">Price : ₹240</p>
+                                            <button class="buy-btn"  onclick="addToCart('Zero to One', 240, 'bus_4.jpg','  ')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-holder">
+                                            <a href="#"><img src="bus_1.jpg" alt="img-3"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">The Psycology of Money</h3>
+                                            <p class="book-author">Morgan Housel</p>
+                                            <p class="book-price">Price : ₹470</p>
+                                            <button class="buy-btn"  onclick="addToCart('The Psycology of Money', 470, 'bus_1.jpg','  ')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-holder">
+                                            <a href="#"><img src="bus_5.jpg" alt="img-3"></a>
+                                            <div class="desc">
+                                            <h3 class="book-title">The Millionaire Fastlane</h3>
+                                            <p class="book-author">MJ Demarco</p>
+                                            <p class="book-price">Price : ₹550</p>
+                                            <button class="buy-btn"  onclick="addToCart('The Millionaire Fastlane', 550, 'bus_5.jpg','  ')">🛒 Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <div style="text-align: right; padding-right: 50px;">
+                <a href="index.html" class="btn">Back <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+            </div>
+        </div>
+
+    <!-- <script>
+        // १. LocalStorage मधून 'bookCart' Key वापरून डेटा घ्या (index.html सोबत जुळण्यासाठी)
+        let cart = JSON.parse(localStorage.getItem('bookCart')) || [];
+
+        // २. कार्ट काउंट अपडेट करणे
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.innerText = cart.length;
+            }
+        }
+
+        // ३. सर्व पुस्तकांखालील Cart Icon शोधून Click Listener जोडणे
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+
+            const cartIcons = document.querySelectorAll('.desc .buy-btn');
+
+            cartIcons.forEach((icon) => {
+                icon.addEventListener('click', function() {
+                    const descContainer = this.closest('.desc');
+                    const imgContainer = this.closest('.image-holder');
+
+                    // पुस्तकाचे टायटल, इमेज आणि प्राइस शोधणे
+                    const titleElement = descContainer.querySelector('.book-title');
+                    const title = titleElement ? titleElement.innerText : "Book";
+
+                    const priceText = descContainer.innerText;
+                    const priceMatch = priceText.match(/\d+/);
+                    const price = priceMatch ? priceMatch[0] : "200";
+
+                    const imgElement = imgContainer ? imgContainer.querySelector('img') : null;
+                    const image = imgElement ? imgElement.getAttribute('src') : 'img1.jpg';
+
+                    const cleanFileName = title.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_') + '.pdf';
+                    const pdfPath = 'public/ebooks/${cleanFileName}';
+
+                    // 📦 ५. पुस्तकाचा ऑब्जेक्ट तयार करणे
+                    const book = {
+                        id: Date.now().toString(),
+                        title: title,
+                        price: price,
+                        image: image,
+                        pdf: pdfPath
+                    };
+
+                    cart.push(book);
+                    localStorage.setItem('bookCart', JSON.stringify(cart));
+                    updateCartCount();
+                    
+                    alert(`📚 "${title}" पुस्तक कार्टमध्ये जोडले गेले आहे!`);
+                });
+            });
+        });
+    </script> --> 
+
+
+    <script>
+    // Cart Data
+    let cart = JSON.parse(localStorage.getItem("bookCart")) || [];
+
+    // Cart Count Update
+    function updateCartCount() {
+        const cartCount = document.getElementById("cart-count");
+        if (cartCount) {
+            cartCount.innerText = cart.length;
+        }
+    }
+
+    // Add To Cart Function
+    function addToCart(title, price, image, pdf) {
+
+        const book = {
+            id: Date.now(),
+            title: title,
+            price: price,
+            image: image,
+            pdf: pdf
+        };
+
+        cart.push(book);
+
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+
+        updateCartCount();
+
+        alert("📚 \"" + title + "\" added to cart successfully!");
+    }
+
+    // Page Load
+    window.onload = function () {
+        updateCartCount();
+    };
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('textid');
+    const searchIcon = document.querySelector('.search-icons');
+
+    function performSearch() {
+        const filterValue = searchInput.value.toLowerCase().trim();
+        
+        // १. कार्ड चा फिक्स क्लास selector (image-holder)
+        const cards = document.querySelectorAll('.image-holder');
+
+        cards.forEach(card => {
+            // २. पुस्तकाचे नाव (book-title) आणि लेखक (book-author) दोन्ही शोधा
+            const titleElement = card.querySelector('.book-title');
+            const authorElement = card.querySelector('.book-author');
+            
+            let cardText = '';
+            if (titleElement) cardText += titleElement.textContent.toLowerCase() + ' ';
+            if (authorElement) cardText += authorElement.textContent.toLowerCase();
+
+            // ३. सर्च व्हॅल्यू जुळली तर दाखवा नाहीतर लपवा
+            if (filterValue === '' || cardText.includes(filterValue)) {
+                card.style.display = 'inline-block'; // किंवा flex/block जशी तुमची CSS रचना असेल
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // १. टाईप करताना रिअल-टाईम सर्च (Input/Keyup)
+    if (searchInput) {
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keyup', performSearch);
+    }
+
+    // २. सर्च आयकॉन वर क्लिक केल्यास
+    if (searchIcon) {
+        searchIcon.addEventListener('click', performSearch);
+    }
+});
+
+// URL मधील 'search' पॅरामीटर वाचून ऑटोमॅटिक फिल्टर करणे
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+
+    if (searchQuery && searchInput) {
+        searchInput.value = searchQuery; // सर्च बारमध्ये टाईप केलेला शब्द टाका
+        performSearch();                  // सर्च फंक्शन लगेच रन करा
+    }
+
+    </script>
+
+    </body>
+>>>>>>> 876a054 (Initial commit)
 </html>

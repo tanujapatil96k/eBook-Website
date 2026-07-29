@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Book Zone</title>
+
+    <!-- ✅ FIX 1: FontAwesome Icons CDN Link जोडली आहे -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html,body{
+            width:100%;
+            overflow-x:hidden;
+        }
+
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            padding: 20px; 
+            padding-top: 100px; /* Navbar मुळे कंटेंन्ट खाली येण्यासाठी */
+            background-color: #f4f4f4; 
+        }
+
+        .cart-container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        h2 { border-bottom: 2px solid #337ab7; padding-bottom: 10px; color: #337ab7; display: flex; justify-content: space-between; align-items: center; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 12px 0; }
+        .cart-item-info { display: flex; align-items: center; gap: 15px; }
+        .cart-item-img { width: 50px; height: 70px; object-fit: cover; border-radius: 4px; }
+        .item-title { font-weight: bold; font-size: 16px; color: #333; }
+        .remove-btn { background: #e74c3c; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .remove-btn:hover { background: #c0392b; }
+        .total-section { text-align: right; margin-top: 20px; font-size: 18px; font-weight: bold; }
+        .checkout-btn { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin-top: 10px; font-weight: bold; }
+        .checkout-btn:hover { background: #218838; }
+        .back-btn { background: #337ab7; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 14px; }
+        .empty-msg { text-align: center; color: #777; margin: 20px 0; font-size: 1rem; }
+
+        /* --- Purchased Books Section --- */
+        .purchased-container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-top: 4px solid #28a745; }
+        .purchased-item { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; border: 1px solid #e9ecef; padding: 12px; border-radius: 6px; margin-bottom: 10px; }
+        .action-btns { display: flex; gap: 8px; }
+        .btn-read { background: #337ab7; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold; }
+        .btn-download { background: #28a745; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold; }
+        .login-prompt-btn { background: #337ab7; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+
+        /* --- Payment Modal --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .payment-modal {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .close-btn { cursor: pointer; color: #888; font-size: 20px; }
+        .payment-options { display: flex; flex-direction: column; gap: 12px; margin: 15px 0; }
+        .option-btn { background: #f8f9fa; border: 2px solid #e9ecef; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 15px; text-align: left; display: flex; align-items: center; gap: 10px; }
+        .pay-now-btn { width: 100%; background: #28a745; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+        /* =========================
+           NAVBAR FIXES
+        ========================= */
+        .navbar {
+            width: 100%;
+            height: 87px;
+            background: rgb(60, 174, 197);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-right li {
+            list-style: none;
+        }
+
+        /* ✅ FIX 2: Navbar Words Font Size वाढवणे */
+        .nav-right li a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px !important; /* शब्दांची फॉन्ट साइज मोठी केली */
+            /*font-weight: 600;*/
+            transition: 0.3s;
+        }
+
+        .nav-right li a:hover {
+            color: #ffe66d;
+        }
+        
+        /* Search Bar ची Height, Shape आणि Perfect Width */
+.nav-search {
+    width: 260px !important;            /* "Search Books & More..." पूर्ण दिसण्यासाठी रुंदी */
+    height: 38px !important;           /* सर्च बारची सुटसुटीत उंची (Height) */
+    display: flex !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    border-radius: 20px !important;     /* सुंदर Round Shape (Pill shape) */
+    padding: 0 12px !important;
+    border: 1px solid #ccc !important;
+    margin-left: 15px !important;      /* Create Account पासून अंतर */
+}
+
+/* इनपुट बॉक्सची आतील सेटिंग */
+.nav-search .search-input {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    color: #333 !important;
+}
+
+/* आयकॉन सुटसुटीत दिसण्यासाठी */
+.nav-search .search-icons {
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+        /* ✅ FIX 3: Search Box & Search Icon Structure */
+        /*.nav-search {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .search-input {
+            padding: 5px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: transparent;
+        }
+
+        .search-icons {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icons i {
+            font-size: 18px;
+            color: #333;
+        }*/
+
+        /* ✅ FIX 4: Cart Icon Styling */
+        .nav-cart {
+            position: relative;
+            margin-left: 10px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .nav-cart a {
+            color: white !important;
+            text-decoration: none;
+            font-size: 1.4rem !important; /* कार्ट आयकॉनची साइज मोठी केली */
+            display: flex;
+            align-items: center;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -2px;
+            width: 18px;
+            height: 15px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+    </style> 
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo-container">
+        <a href="index.html"><img src="logo.jpg.png" alt="THE READERS CHOICE Logo" class="logo-img" onerror="this.style.display='none';"></a>
+    </div>
+    <ul class="nav-right">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="new_arrival.html">New Arrival</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="Register.html">Create Account</a></li>
+    </ul>
+    
+    <!-- Search Box With Search Icon -->
+    <div class="nav-search">
+        <input type="text" id="textid" class="search-input" placeholder="Search Books & More...">
+        <div class="search-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </div>
+     
+    <!-- Cart Box With Cart Icon -->
+    <div class="nav-cart">
+        <a href="cart.html" title="View Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+        </a>
+    </div>
+</nav>
+
+<!-- १. Cart Section -->
+<div class="cart-container">
+    <h2>
+        <span>Your Shopping Cart 🛒</span>
+        <a href="products.html" class="back-btn">← Back to Shop</a>
+    </h2>
+    
+    <div id="cart-items-list"></div>
+
+    <div class="total-section">
+        Total Amount: ₹<span id="total-price">0</span>
+        <br>
+        <button class="checkout-btn" onclick="openPaymentModal()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<!-- २. Purchased Books Section -->
+<div class="purchased-container">
+    <h3 style="color: #28a745; margin-top: 0; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+        📚 My Purchased Books (माझी खरेदी केलेली पुस्तके)
+    </h3>
+    <div id="purchased-books-list"></div>
+</div>
+
+<!-- Fake Payment Modal Popup -->
+<div class="modal-overlay" id="paymentModal">
+    <div class="payment-modal">
+        <div class="modal-header">
+            <span>Fake Payment Gateway 💳</span>
+            <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+        </div>
+        
+        <p style="margin: 0; color: #555;">एकूण भरायची रक्कम: <strong style="color: #28a745;">₹<span id="modal-total">0</span></strong></p>
+        
+        <div class="payment-options">
+            <label class="option-btn">
+                <input type="radio" name="payMethod" value="UPI" checked>
+                📱 UPI (Google Pay / PhonePe)
+            </label>
+            <label class="option-btn">
+                <input type="radio" name="payMethod" value="Card">
+                💳 Debit / Credit Card
+            </label>
+            <label class="option-btn">
+                <input type="radio" name="payMethod" value="COD">
+                💵 Cash on Delivery (COD)
+            </label>
+        </div>
+
+        <button class="pay-now-btn" onclick="processFakePayment()">Pay Now (Test Mode)</button>
+    </div>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('bookCart')) || [];
+    let myPurchasedBooks = JSON.parse(localStorage.getItem('myPurchasedBooks')) || [];
+
+    function getLoggedInUser() {
+        return localStorage.getItem('loggedInUser') || localStorage.getItem('user');
+    }
+
+    function renderCart() {
+        const cartList = document.getElementById('cart-items-list');
+        const totalPriceElement = document.getElementById('total-price');
+        const cartCountElement = document.getElementById('cart-count');
+        
+        if (cartCountElement) cartCountElement.innerText = cart.length;
+        if (!cartList || !totalPriceElement) return;
+
+        cartList.innerHTML = '';
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartList.innerHTML = '<p class="empty-msg">तुमचे कार्ट रिकामे आहे!</p>';
+            totalPriceElement.innerText = '0';
+        } else {
+            cart.forEach((item, index) => {
+                const itemPrice = parseInt(item.price) || 0;
+                total += itemPrice;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                const itemImg = item.image || 'img1.jpg';
+
+                itemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${itemImg}" alt="${item.title}" class="cart-item-img" onerror="this.src='img1.jpg';">
+                        <div>
+                            <div class="item-title">${item.title || 'Book'}</div>
+                            <p style="margin: 3px 0; color: #555;">Price: ₹${itemPrice}</p>
+                        </div>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartList.appendChild(itemElement);
+            });
+
+            totalPriceElement.innerText = total;
+        }
+
+        renderPurchasedBooks();
+    }
+
+    /* function renderPurchasedBooks() {
+        const purchasedList = document.getElementById('purchased-books-list');
+        if (!purchasedList) return;
+        
+        purchasedList.innerHTML = '';
+        const user = getLoggedInUser();
+
+        if (!user) {
+            purchasedList.innerHTML = `
+                <div style="text-align: center; padding: 15px;">
+                    <p style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">
+                        🔒 तुमची खरेदी केलेली पुस्तके पाहण्यासाठी व डाउनलोड करण्यासाठी आधी Login करा.
+                    </p>
+                    <a href="login.html" class="login-prompt-btn">Login Now 🔑</a>
+                </div>
+            `;
+            return;
+        }
+
+        if (myPurchasedBooks.length === 0) {
+            purchasedList.innerHTML = '<p class="empty-msg">तुम्ही अजून एकही पुस्तक खरेदी केलेले नाही.</p>';
+            return;
+        }
+
+        myPurchasedBooks.forEach(book => {
+            const pdfUrl = book.pdf;
+            const bookItem = document.createElement('div');
+            bookItem.className = 'purchased-item';
+            
+            bookItem.innerHTML = `
+                <div>
+                    <strong style="font-size: 16px; color: #333;">${book.title || 'Book'}</strong>
+                    <div style="font-size: 12px; color: #777;">Purchased Date: ${book.date || 'Recently'}</div>
+                </div>
+                <div class="action-btns">
+                    <a href="${pdfUrl}" target="_blank" class="btn-read">📖 Read</a>
+                    <a href="${pdfUrl}" download="${book.title || 'Book'}.pdf" class="btn-download">⬇️ Download</a>
+                </div>
+            `;
+            purchasedList.appendChild(bookItem);
+        });
+    }*/
+
+    function renderPurchasedBooks() {
+    const purchasedList = document.getElementById('purchased-books-list');
+    if (!purchasedList) return;
+    
+    purchasedList.innerHTML = '';
+    const userEmail = getLoggedInUser(); // ✅ सध्याच्या युझरचा Email ID
+
+    if (!userEmail) {
+        purchasedList.innerHTML = `
+            <div style="text-align: center; padding: 15px;">
+                <p style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">
+                    🔒 तुमची खरेदी केलेली पुस्तके पाहण्यासाठी व डाउनलोड करण्यासाठी आधी Login करा.
+                </p>
+                <a href="login.html" class="login-prompt-btn">Login Now 🔑</a>
+            </div>
+        `;
+        return;
+    }
+
+    // ✅ Email ID मॅच करून फिल्टर करा
+    const userPurchasedBooks = myPurchasedBooks.filter(book => book.purchasedBy === userEmail);
+
+    if (userPurchasedBooks.length === 0) {
+        purchasedList.innerHTML = '<p class="empty-msg">तुम्ही अजून एकही पुस्तक खरेदी केलेले नाही.</p>';
+        return;
+    }
+
+    userPurchasedBooks.forEach(book => {
+        const pdfUrl = book.pdf;
+        const bookItem = document.createElement('div');
+        bookItem.className = 'purchased-item';
+        
+        bookItem.innerHTML = `
+            <div>
+                <strong style="font-size: 16px; color: #333;">${book.title || 'Book'}</strong>
+                <div style="font-size: 12px; color: #777;">Purchased Date: ${book.date || 'Recently'}</div>
+            </div>
+            <div class="action-btns">
+                <a href="${pdfUrl}" target="_blank" class="btn-read">📖 Read</a>
+                <a href="${pdfUrl}" download="${book.title || 'Book'}.pdf" class="btn-download">⬇️ Download</a>
+            </div>
+        `;
+        purchasedList.appendChild(bookItem);
+    });
+}
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('bookCart', JSON.stringify(cart));
+        renderCart();
+    }
+
+    function openPaymentModal() {
+        if (cart.length === 0) {
+            alert('तुमचे कार्ट रिकामे आहे!');
+            return;
+        }
+
+        const user = getLoggedInUser();
+        if (!user) {
+            alert('⚠️ Checkout करण्यासाठी आणि पुस्तके डाउनलोड करण्यासाठी आधी Login करा!');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const total = cart.reduce((sum, item) => sum + (parseInt(item.price) || 0), 0);
+        document.getElementById('modal-total').innerText = total;
+        document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+    function closePaymentModal() {
+        document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    /*function processFakePayment() {
+        const selectedOption = document.querySelector('input[name="payMethod"]:checked').value;
+        const total = document.getElementById('modal-total').innerText;
+
+        alert(`⏳ Processing Payment via ${selectedOption}...`);
+
+        setTimeout(() => {
+            alert(`🎉 Success! ₹${total} चे पेमेंट यशस्वी झाले! पुस्तक तुमच्या 'My Purchased Books' सेक्शन मध्ये ॲड झाले आहे.`);
+
+            const today = new Date().toLocaleDateString();
+
+            cart.forEach(item => {
+                myPurchasedBooks.push({
+                    ...item,
+                    date: today
+                });
+            });
+
+            localStorage.setItem('myPurchasedBooks', JSON.stringify(myPurchasedBooks));
+            localStorage.removeItem('bookCart');
+            cart = [];
+
+            closePaymentModal();
+            renderCart();
+
+        }, 1200);
+    }*/
+
+    function processFakePayment() {
+    const selectedOption = document.querySelector('input[name="payMethod"]:checked').value;
+    const total = document.getElementById('modal-total').innerText;
+    
+    // ✅ लॉगिन असलेल्या युझरचा Email ID घ्या
+    const currentUserEmail = getLoggedInUser(); 
+
+    alert(`⏳ Processing Payment via ${selectedOption}...`);
+
+    setTimeout(() => {
+        alert(`🎉 Success! ₹${total} चे पेमेंट यशस्वी झाले! पुस्तक तुमच्या 'My Purchased Books' सेक्शन मध्ये ॲड झाले आहे.`);
+
+        const today = new Date().toLocaleDateString();
+
+        cart.forEach(item => {
+            myPurchasedBooks.push({
+                ...item,
+                date: today,
+                purchasedBy: currentUserEmail // ✅ ईमेल आयडी सेव्ह केला
+            });
+        });
+
+        localStorage.setItem('myPurchasedBooks', JSON.stringify(myPurchasedBooks));
+        localStorage.removeItem('bookCart');
+        cart = [];
+
+        closePaymentModal();
+        renderCart();
+
+    }, 1200);
+}
+
+    renderCart();
+</script>
+
+</body>
+</html>

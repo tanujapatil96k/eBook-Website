@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -206,4 +207,267 @@ hr {
     width: 100%;
     margin: 10px 0;
   }
+=======
+body {
+  margin: 0;
+  padding-top: 70px; /* To account for fixed navbar */
+}
+
+/* Navbar styles */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(60, 174, 197);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 25px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px; /* Adjust based on your logo's aspect ratio */
+  width: auto;
+}
+
+/* Keep your existing nav-right styles */
+.nav-right {
+  text-align: right;
+}
+
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right li {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.nav-right a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-right a:hover {
+  color:#ffe66d;
+}
+
+/* Search Bar ची Height, Shape आणि Perfect Width */
+.nav-search {
+    width: 250px !important;            /* "Search Books & More..." पूर्ण दिसण्यासाठी रुंदी */
+    height: 38px !important;           /* सर्च बारची सुटसुटीत उंची (Height) */
+    display: flex !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    border-radius: 20px !important;     /* सुंदर Round Shape (Pill shape) */
+    padding: 0 12px !important;
+    border: 1px solid #ccc !important;
+    margin-left: 15px !important;      /* Create Account पासून अंतर */
+}
+
+/* इनपुट बॉक्सची आतील सेटिंग */
+.nav-search .search-input {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    color: #333 !important;
+}
+
+/* आयकॉन सुटसुटीत दिसण्यासाठी */
+.nav-search .search-icons {
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-icons {
+  margin-left: -25px;
+}
+
+.nav-cart {
+  color: white;
+  font-size: 1.5em;
+  padding: 0 1px;
+  cursor: pointer;
+}
+
+/* Vertical Navigation */
+.vertical-nav {
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 20%;
+  height: 100%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 25px;
+}
+
+.vertical-nav ul {
+  padding: 0;
+  list-style: none;
+}
+
+.vertical-nav li {
+  padding: 8px 0;
+}
+
+.vertical-nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+.vertical-nav a:hover {
+  color: rgb(60, 174, 197);
+}
+
+/* Main Content */
+.section-body {
+  margin-left: 25%;
+  padding: 20px;
+}
+
+/* Gallery Styles */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: large;
+
+}
+.image-holder {
+  border: 1px solid #ddd;
+  padding: 10px;
+  justify-content: space-between;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.image-holder:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.image-holder img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.desc {
+  padding: 5px 0;
+  text-align: center;
+  flex-grow: 1 !important;                  /* उरलेली पूर्ण जागा व्यापेल */
+  justify-content: space-between !important; /* बटणला शेवटी ढकलण्यास मदत करेल */
+}
+
+.desc p,h3 {
+  margin: 6px 0
+}
+
+div.desc i {
+    float: left;
+    padding-left: 10px;
+    margin-top: 0px;
+    font-size: 22px;          /* आयकॉनची साईझ मोठी करा (गरजेनुसार 20px ते 25px ठेवा) */
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.desc button {
+  width: 100%;
+  background-color: rgb(60, 174, 197);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin: auto 10px 5px 0;
+  font-size: 14px;
+  justify-content: space-between
+}
+
+.desc button:hover {
+  background-color: rgb(50, 150, 170);
+}
+
+hr {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* Back button */
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: rgb(60, 174, 197);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.btn:hover {
+  background-color: rgb(50, 150, 170);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vertical-nav {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+  
+  .section-body {
+    margin-left: 0;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .nav-right {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-search {
+    width: 100%;
+    margin: 10px 0;
+  }
+>>>>>>> 876a054 (Initial commit)
 }

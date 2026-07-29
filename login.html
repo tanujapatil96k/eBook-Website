@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,3 +75,94 @@ function loginUser(event) {
 </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="login.css">
+    <title> CSS Login Screen Tutorial </title>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.jpg.png" alt="THE READERS CHOICE Logo" class="logo-img"></a>
+        </div>
+        <div class="nav-right">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="new_arrival.html">New Arrival</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="Register.html">Create Account</a></li>
+        </div>
+    </nav>
+
+    <div class="login-page">
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>LOGIN</h3>
+            <p>Please enter your credentials to login.</p>
+          </div>
+        </div>
+        <!-- आपला लॉगिन फॉर्म -->
+        <form class="login-form">
+          <input type="email" id="username" placeholder="Email" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+          <p class="message">Not registered? <a href="Register.html">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+
+   
+    <script>
+    const loginForm = document.querySelector('.login-form');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // पेज आपोआप रिफ्रेश होऊ नये म्हणून
+
+            // आयडीवरून अचूक व्हॅल्यू मिळवणे
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // बॅकएंड ईमेल मागतो, म्हणून युझरनेमला ईमेल फॉरमॅटमध्ये बदलणे
+            const email = username.includes('@') ? username : `${username}@gmail.com`;
+
+            try {
+                // एक्सप्रेस बॅकएंडच्या Login API ला कॉल करणे
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                // जर बॅकएंडने सांगितलं की लॉगिन यशस्वी झालं आहे:
+                if (data.success) {
+                    alert("🔓 लॉगिन यशस्वी झाले! कनेक्टेड आहात! 🎉");
+                    
+                    // युझरचा डेटा ब्राउझरच्या मेमरीमध्ये सेव्ह करणे
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // लॉगिन झाल्यावर थेट मुख्य होम पेजवर जाणे
+                   window.location.href = 'file:///C:/Users/Tanuja%20Patil/OneDrive/Desktop/tanuja%20patil/tanuja/index.html';
+                } else {
+                    // पासवर्ड किंवा युझरनेम चुकीचा असेल तर
+                    alert("❌ लॉगिन अपयशी: " + data.message);
+                }
+            } catch (error) {
+                console.error("कनेक्शन एरर:", error);
+                alert("😥 सर्व्हरशी जोडणी होऊ शकली नाही. तुमचा Node.js सर्व्हर चालू (Run) आहे ना हे तपासा.");
+            }
+        });
+    }
+    </script>
+</body>
+</html>
+>>>>>>> 876a054 (Initial commit)
