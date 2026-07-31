@@ -1,5 +1,5 @@
 import express from "express";
-import Contact from "../models/Contact.js"; // १. मॉडेल योग्य प्रकारे इम्पोर्ट केले
+import Contact from "../models/contact.js"; // १. मॉडेल योग्य प्रकारे इम्पोर्ट केले
 
 const router = express.Router();
 
