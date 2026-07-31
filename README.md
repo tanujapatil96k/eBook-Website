@@ -105,6 +105,12 @@ eBook-Website/
 - Git
 - GitHub
 
+## 📚 Book Source
+
+The eBooks used in this project are sourced from **Project Gutenberg**, a library of free public domain books. These books are included solely for educational and demonstration purposes.
+
+**Website:** https://www.gutenberg.org/
+
 
 ## 🚧 Current Development
 
@@ -133,3 +139,8 @@ This project uses a **dummy payment system** for demonstration purposes only. No
 - Email Notifications
 - Dark Mode
 - Multi-language Support
+
+
+## ⚠️ Disclaimer
+
+This project is developed for educational purposes only. The sample eBooks are sourced from Project Gutenberg, which offers public domain books. No copyrighted content is distributed through this project.
