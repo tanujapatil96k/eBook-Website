@@ -153,19 +153,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.password-box{
+.password-box {
     position: relative;
-    width: 300px;
-}
-
-.password-box input{
     width: 100%;
-    padding: 10px 40px 10px 10px;
-    font-size: 16px;
-    box-sizing: border-box;
+    margin-bottom: 15px;
 }
 
-.password-box i{
+.password-box input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    padding: 15px 45px 15px 15px; /* Right padding for eye icon */
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 0;
+}
+
+.password-box i {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -174,6 +180,6 @@ body {
     color: #666;
 }
 
-.password-box i:hover{
+.password-box i:hover {
     color: black;
 }
