@@ -32,6 +32,7 @@
         <form class="login-form">
           <input type="email" id="username" placeholder="Email" required />
           <input type="password" id="password" placeholder="Password" required />
+          <i class="fa-solid fa-eye" id="togglePassword"></i>
           <button type="submit">Login</button>
           <p class="message">Not registered? <a href="Register.html">Create an account</a></p>
         </form>
@@ -40,6 +41,25 @@
 
    
     <script>
+
+    const password = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword.addEventListener("click", () => {
+
+    if(password.type === "password"){
+        password.type = "text";
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
+    }
+    else{
+        password.type = "password";
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+    }
+
+});
+
     const loginForm = document.querySelector('.login-form');
 
     if (loginForm) {

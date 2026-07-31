@@ -32,6 +32,7 @@
           <input type="text" id="username" placeholder="username" pattern="[A-Za-z0-9]{1,6}"  required/>
           <input type="email" id="email" placeholder="Email" required />
           <input type="password" id="password" placeholder="password" required />
+          <i class="fa-solid fa-eye" id="togglePassword"></i>
   
           <!-- बदल: इथून <a> टॅग काढून फक्त साधा type="submit" असलेला बटन ठेवला आहे -->
           <button type="submit">Register</button>
@@ -43,7 +44,25 @@
 
     
 <script>  
+
     
+const password = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword.addEventListener("click", () => {
+
+    if(password.type === "password"){
+        password.type = "text";
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
+    }
+    else{
+        password.type = "password";
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+    }
+
+});
 
 // तुमच्या फॉर्मला सिलेक्ट करणे (इथे आपण फॉर्म शोधत आहोत)
 

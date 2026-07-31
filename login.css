@@ -152,3 +152,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.password-box{
+    position: relative;
+    width: 300px;
+}
+
+.password-box input{
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-box i{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.password-box i:hover{
+    color: black;
+}
