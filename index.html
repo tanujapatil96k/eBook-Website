@@ -341,11 +341,7 @@ function addToCart(book) {
 // ३. बॅकएंडवरून पुस्तके फेच करणे (बॅकएंड चालू असल्यास ते जुन्या बुक्सची जागा घेईल)
 async function fetchBooks() {
     try {
-        const response = await fetch('https://ebook-website-readers-choice.onrender.com/api/contact/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname, lastname, country, subject })
-});
+        const response = await fetch('https://ebook-website-readers-choice.onrender.com')
         const data = await response.json();
         
         
@@ -430,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const subject = document.getElementById('subject').value.trim();
 
             try {
-                const response = await fetch('http://localhost:5000/api/contact/submit', {
+                const response = await fetch('https://ebook-website-readers-choice.onrender.com/api/contact/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ firstname, lastname, country, subject })
@@ -445,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("Could not connect to the server! Please make sure the Node server is running.");
+                alert("Could not connect to the server. Please check that your Node.js server is running.");
             }
         });
     }

@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title> CSS Login Screen Tutorial </title>
 </head>
 <body>
@@ -95,7 +96,7 @@ togglePassword.addEventListener("click", () => {
                     localStorage.setItem('user', JSON.stringify(data.user));
                     
                     // लॉगिन झाल्यावर थेट मुख्य होम पेजवर जाणे
-                   window.location.href = 'file:///C:/Users/Tanuja%20Patil/OneDrive/Desktop/tanuja%20patil/tanuja/index.html';
+                   window.location.href = 'index.html';
                 } else {
                     // पासवर्ड किंवा युझरनेम चुकीचा असेल तर
                     alert("❌ Login failed: " + data.message);
