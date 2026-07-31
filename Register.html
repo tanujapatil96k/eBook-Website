@@ -92,17 +92,17 @@ if (signupForm) {
             const data = await response.json();
 
             if (data.success) {
-                alert("🎉 अभिनंदन! नवीन युझर डेटाबेसमध्ये यशस्वीरित्या रजिस्टर झाला आहे!");
+                alert("🎉 Congratulations! The new user has been successfully registered!");
                 signupForm.reset(); // फॉर्ममधील सगळी माहिती साफ करण्यासाठी
                 
                 // यशस्वी रजिस्टर झाल्यावर युझरला लॉगिन पेजवर पाठवण्यासाठी:
                 window.location.href = 'login.html';
             } else {
-                alert("❌ त्रुटी: " + data.message);
+                alert("❌ Error: " + data.message);
             }
         } catch (error) {
-            console.error("कनेक्शन एरर:", error);
-            alert("😥 सर्व्हरशी जोडणी होऊ शकली नाही. तुमचा Node.js सर्व्हर चालू आहे ना हे तपासा.");
+            console.error("Connection Error:", error);
+            alert("😥 Could not connect to the server. Please check that your Node.js server is running.");
 
         }
     });

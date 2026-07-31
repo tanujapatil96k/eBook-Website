@@ -454,62 +454,6 @@
             </div>
         </div>
 
-    <!-- <script>
-        // १. LocalStorage मधून 'bookCart' Key वापरून डेटा घ्या (index.html सोबत जुळण्यासाठी)
-        let cart = JSON.parse(localStorage.getItem('bookCart')) || [];
-
-        // २. कार्ट काउंट अपडेट करणे
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCountElement.innerText = cart.length;
-            }
-        }
-
-        // ३. सर्व पुस्तकांखालील Cart Icon शोधून Click Listener जोडणे
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartCount();
-
-            const cartIcons = document.querySelectorAll('.desc .buy-btn');
-
-            cartIcons.forEach((icon) => {
-                icon.addEventListener('click', function() {
-                    const descContainer = this.closest('.desc');
-                    const imgContainer = this.closest('.image-holder');
-
-                    // पुस्तकाचे टायटल, इमेज आणि प्राइस शोधणे
-                    const titleElement = descContainer.querySelector('.book-title');
-                    const title = titleElement ? titleElement.innerText : "Book";
-
-                    const priceText = descContainer.innerText;
-                    const priceMatch = priceText.match(/\d+/);
-                    const price = priceMatch ? priceMatch[0] : "200";
-
-                    const imgElement = imgContainer ? imgContainer.querySelector('img') : null;
-                    const image = imgElement ? imgElement.getAttribute('src') : 'img1.jpg';
-
-                    const cleanFileName = title.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_') + '.pdf';
-                    const pdfPath = 'public/ebooks/${cleanFileName}';
-
-                    // 📦 ५. पुस्तकाचा ऑब्जेक्ट तयार करणे
-                    const book = {
-                        id: Date.now().toString(),
-                        title: title,
-                        price: price,
-                        image: image,
-                        pdf: pdfPath
-                    };
-
-                    cart.push(book);
-                    localStorage.setItem('bookCart', JSON.stringify(cart));
-                    updateCartCount();
-                    
-                    alert(`📚 "${title}" पुस्तक कार्टमध्ये जोडले गेले आहे!`);
-                });
-            });
-        });
-    </script> --> 
-
 
     <script>
     // Cart Data

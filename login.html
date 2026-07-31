@@ -89,7 +89,7 @@ togglePassword.addEventListener("click", () => {
 
                 // जर बॅकएंडने सांगितलं की लॉगिन यशस्वी झालं आहे:
                 if (data.success) {
-                    alert("🔓 लॉगिन यशस्वी झाले! कनेक्टेड आहात! 🎉");
+                    alert("🔓 Login successful! You are now connected! 🎉");
                     
                     // युझरचा डेटा ब्राउझरच्या मेमरीमध्ये सेव्ह करणे
                     localStorage.setItem('user', JSON.stringify(data.user));
@@ -98,11 +98,11 @@ togglePassword.addEventListener("click", () => {
                    window.location.href = 'file:///C:/Users/Tanuja%20Patil/OneDrive/Desktop/tanuja%20patil/tanuja/index.html';
                 } else {
                     // पासवर्ड किंवा युझरनेम चुकीचा असेल तर
-                    alert("❌ लॉगिन अपयशी: " + data.message);
+                    alert("❌ Login failed: " + data.message);
                 }
             } catch (error) {
-                console.error("कनेक्शन एरर:", error);
-                alert("😥 सर्व्हरशी जोडणी होऊ शकली नाही. तुमचा Node.js सर्व्हर चालू (Run) आहे ना हे तपासा.");
+                console.error("Connection Error:", error);
+                alert("😥 Could not connect to the server. Please check that your Node.js server is running.");
             }
         });
     }

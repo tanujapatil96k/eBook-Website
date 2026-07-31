@@ -335,7 +335,7 @@ function addToCart(book) {
     cart.push(book);
     localStorage.setItem('bookCart', JSON.stringify(cart));
     updateCartCount();
-    alert(`📚 "${book.title}" हे पुस्तक कार्टमध्ये जोडले गेले आहे!`);
+    alert(`📚 "${book.title}" This book has been added to your cart!`);
 }
 
 // ३. बॅकएंडवरून पुस्तके फेच करणे (बॅकएंड चालू असल्यास ते जुन्या बुक्सची जागा घेईल)
@@ -348,33 +348,9 @@ async function fetchBooks() {
 });
         const data = await response.json();
         
-    /*  if (data.success && data.books.length > 0) {
-            const books = data.books;
-            const galleryContainer = document.querySelector('.gallery'); 
-            
-            if (galleryContainer) {
-                galleryContainer.innerHTML = '';
-
-                books.forEach(book => {
-                    const bookDiv = document.createElement('div');
-                    bookDiv.className = 'image-holder';
-
-                    const bookImgSrc = book.image || 'img1.jpg';
-                    const bookData = JSON.stringify(book).replace(/'/g, "&apos;");
-
-                    bookDiv.innerHTML = `
-                        <a href="#"><img src="${bookImgSrc}" alt="${book.title}" onerror="this.src='img1.jpg';"></a>
-                        <h3 class="book-title">${book.title}</h3>
-                        <p class="book-author">By: ${book.author}</p>
-                        <p class="book-price">₹${book.price}</p>
-                        <button class="buy-btn" onclick='addToCart(${bookData})'>🛒 Add to Cart</button>
-                    `;
-                    galleryContainer.appendChild(bookDiv);
-                });
-            }
-        }*/
+        
     } catch (error) {
-        console.log("बॅकएंड कनेक्ट नसले तरी HTML मधील बुक्स दिसतील.");
+        console.log("The books in the HTML will be displayed even if the backend is not connected.");
     }
 }
 
@@ -398,88 +374,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('logout-btn').addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem('user');
-            alert("तुम्ही यशस्वीरित्या लॉगआउट झाला आहात! 👋");
+            alert("You have successfully logged out. 👋");
             window.location.reload();
         });
     }
-
-  /*  document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('textid');
-    const searchIcon = document.querySelector('.search-icons');
-
-    function performSearch() {
-        const filterValue = searchInput.value.toLowerCase().trim();
-        
-        // १. कार्ड चा फिक्स क्लास selector (image-holder)
-        const cards = document.querySelectorAll('.image-holder');
-
-        cards.forEach(card => {
-            // २. पुस्तकाचे नाव (book-title) आणि लेखक (book-author) दोन्ही शोधा
-            const titleElement = card.querySelector('.book-title');
-            const authorElement = card.querySelector('.book-author');
-            
-            let cardText = '';
-            if (titleElement) cardText += titleElement.textContent.toLowerCase() + ' ';
-            if (authorElement) cardText += authorElement.textContent.toLowerCase();
-
-            // ३. सर्च व्हॅल्यू जुळली तर दाखवा नाहीतर लपवा
-            if (filterValue === '' || cardText.includes(filterValue)) {
-                card.style.display = 'inline-block'; // किंवा flex/block जशी तुमची CSS रचना असेल
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    // १. टाईप करताना रिअल-टाईम सर्च (Input/Keyup)
-    if (searchInput) {
-        searchInput.addEventListener('input', performSearch);
-        searchInput.addEventListener('keyup', performSearch);
-    }
-
-    // २. सर्च आयकॉन वर क्लिक केल्यास
-    if (searchIcon) {
-        searchIcon.addEventListener('click', performSearch);
-    }
-});
-
-// URL मधील 'search' पॅरामीटर वाचून ऑटोमॅटिक फिल्टर करणे
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get('search');
-
-    if (searchQuery && searchInput) {
-        searchInput.value = searchQuery; // सर्च बारमध्ये टाईप केलेला शब्द टाका
-        performSearch();                  // सर्च फंक्शन लगेच रन करा
-    }*/
-
-
-    // 🔍 Global Smart Search Logic
-    /* const searchInput = document.getElementById('textid');
-    const searchIcon = document.querySelector('.search-icons');
-
-    function performGlobalSearch() {
-        const query = searchInput.value.trim().toLowerCase();
-        
-        if (query !== "") {
-            if (query.includes('new') || query.includes('arrival')) {
-                window.location.href = `new_arrival.html?search=${encodeURIComponent(query)}`;
-            } else {
-                window.location.href = `products.html?search=${encodeURIComponent(query)}`;
-            }
-        }
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                performGlobalSearch();
-            }
-        });
-    }
-
-    if (searchIcon) {
-        searchIcon.addEventListener('click', performGlobalSearch);
-    }*/
 
    // 🔍 Live Search Logic for Home Page (Fixed)
     const searchInput = document.getElementById('textid');
@@ -543,11 +441,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("🎉 " + data.message);
                     contactForm.reset();
                 } else {
-                    alert("❌ अडचण आली: " + data.message);
+                    alert("❌An error occurred: " + data.message);
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("सर्व्हरशी संपर्क झाला नाही! नोड सर्व्हर सुरू आहे ना ते तपासा.");
+                alert("Could not connect to the server! Please make sure the Node server is running.");
             }
         });
     }

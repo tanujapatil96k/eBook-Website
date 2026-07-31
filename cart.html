@@ -332,7 +332,7 @@
         let total = 0;
 
         if (cart.length === 0) {
-            cartList.innerHTML = '<p class="empty-msg">तुमचे कार्ट रिकामे आहे!</p>';
+            cartList.innerHTML = '<p class="empty-msg">Your cart is empty!</p>';
             totalPriceElement.innerText = '0';
         } else {
             cart.forEach((item, index) => {
@@ -362,49 +362,6 @@
         renderPurchasedBooks();
     }
 
-    /* function renderPurchasedBooks() {
-        const purchasedList = document.getElementById('purchased-books-list');
-        if (!purchasedList) return;
-        
-        purchasedList.innerHTML = '';
-        const user = getLoggedInUser();
-
-        if (!user) {
-            purchasedList.innerHTML = `
-                <div style="text-align: center; padding: 15px;">
-                    <p style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">
-                        🔒 तुमची खरेदी केलेली पुस्तके पाहण्यासाठी व डाउनलोड करण्यासाठी आधी Login करा.
-                    </p>
-                    <a href="login.html" class="login-prompt-btn">Login Now 🔑</a>
-                </div>
-            `;
-            return;
-        }
-
-        if (myPurchasedBooks.length === 0) {
-            purchasedList.innerHTML = '<p class="empty-msg">तुम्ही अजून एकही पुस्तक खरेदी केलेले नाही.</p>';
-            return;
-        }
-
-        myPurchasedBooks.forEach(book => {
-            const pdfUrl = book.pdf;
-            const bookItem = document.createElement('div');
-            bookItem.className = 'purchased-item';
-            
-            bookItem.innerHTML = `
-                <div>
-                    <strong style="font-size: 16px; color: #333;">${book.title || 'Book'}</strong>
-                    <div style="font-size: 12px; color: #777;">Purchased Date: ${book.date || 'Recently'}</div>
-                </div>
-                <div class="action-btns">
-                    <a href="${pdfUrl}" target="_blank" class="btn-read">📖 Read</a>
-                    <a href="${pdfUrl}" download="${book.title || 'Book'}.pdf" class="btn-download">⬇️ Download</a>
-                </div>
-            `;
-            purchasedList.appendChild(bookItem);
-        });
-    }*/
-
     function renderPurchasedBooks() {
     const purchasedList = document.getElementById('purchased-books-list');
     if (!purchasedList) return;
@@ -416,7 +373,7 @@
         purchasedList.innerHTML = `
             <div style="text-align: center; padding: 15px;">
                 <p style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">
-                    🔒 तुमची खरेदी केलेली पुस्तके पाहण्यासाठी व डाउनलोड करण्यासाठी आधी Login करा.
+                    🔒 Please log in first to view and download your purchased books.
                 </p>
                 <a href="login.html" class="login-prompt-btn">Login Now 🔑</a>
             </div>
@@ -428,7 +385,7 @@
     const userPurchasedBooks = myPurchasedBooks.filter(book => book.purchasedBy === userEmail);
 
     if (userPurchasedBooks.length === 0) {
-        purchasedList.innerHTML = '<p class="empty-msg">तुम्ही अजून एकही पुस्तक खरेदी केलेले नाही.</p>';
+        purchasedList.innerHTML = '<p class="empty-msg">You have not purchased any books yet.</p>';
         return;
     }
 
@@ -459,13 +416,13 @@
 
     function openPaymentModal() {
         if (cart.length === 0) {
-            alert('तुमचे कार्ट रिकामे आहे!');
+            alert('Your cart is empty!');
             return;
         }
 
         const user = getLoggedInUser();
         if (!user) {
-            alert('⚠️ Checkout करण्यासाठी आणि पुस्तके डाउनलोड करण्यासाठी आधी Login करा!');
+            alert('⚠️ Please log in first to proceed to checkout and download your books!');
             window.location.href = 'login.html';
             return;
         }
@@ -479,33 +436,6 @@
         document.getElementById('paymentModal').style.display = 'none';
     }
 
-    /*function processFakePayment() {
-        const selectedOption = document.querySelector('input[name="payMethod"]:checked').value;
-        const total = document.getElementById('modal-total').innerText;
-
-        alert(`⏳ Processing Payment via ${selectedOption}...`);
-
-        setTimeout(() => {
-            alert(`🎉 Success! ₹${total} चे पेमेंट यशस्वी झाले! पुस्तक तुमच्या 'My Purchased Books' सेक्शन मध्ये ॲड झाले आहे.`);
-
-            const today = new Date().toLocaleDateString();
-
-            cart.forEach(item => {
-                myPurchasedBooks.push({
-                    ...item,
-                    date: today
-                });
-            });
-
-            localStorage.setItem('myPurchasedBooks', JSON.stringify(myPurchasedBooks));
-            localStorage.removeItem('bookCart');
-            cart = [];
-
-            closePaymentModal();
-            renderCart();
-
-        }, 1200);
-    }*/
 
     function processFakePayment() {
     const selectedOption = document.querySelector('input[name="payMethod"]:checked').value;
@@ -517,7 +447,7 @@
     alert(`⏳ Processing Payment via ${selectedOption}...`);
 
     setTimeout(() => {
-        alert(`🎉 Success! ₹${total} चे पेमेंट यशस्वी झाले! पुस्तक तुमच्या 'My Purchased Books' सेक्शन मध्ये ॲड झाले आहे.`);
+        alert(`🎉 Success! ₹${total} Payment successful! Your book has been added to the "My Purchased Books" section.`);
 
         const today = new Date().toLocaleDateString();
 
