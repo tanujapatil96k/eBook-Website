@@ -79,7 +79,7 @@ if (signupForm) {
 
         try {
             // बॅकएंड API ला कॉल करणे
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('https://ebook-website-readers-choice.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ if (signupForm) {
                 signupForm.reset(); // फॉर्ममधील सगळी माहिती साफ करण्यासाठी
                 
                 // यशस्वी रजिस्टर झाल्यावर युझरला लॉगिन पेजवर पाठवण्यासाठी:
-                window.location.href = 'file:///C:/Users/Tanuja%20Patil/OneDrive/Desktop/tanuja%20patil/tanuja/login.html';
+                window.location.href = 'login.html';
             } else {
                 alert("❌ त्रुटी: " + data.message);
             }
