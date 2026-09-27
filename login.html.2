@@ -1,0 +1,30 @@
+<form class="login-form" onsubmit="loginUser(event)">
+  <input type="text" id="username" placeholder="username" required />
+  <input type="password" id="password" placeholder="password" required />
+  <button type="submit">Login</button>
+  <p class="message">Not registered? <a href="Register.html">Create an account</a></p>
+</form>
+
+<script>
+function loginUser(event) {
+  event.preventDefault();
+
+  fetch("http://127.0.0.1:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.message) {
+      alert("Login successful");
+      window.location.href = "index.html";
+    } else {
+      alert(data.error);
+    }
+  });
+}
+</script>
