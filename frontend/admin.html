@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Zone - Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f7f6; }
+        .form-box { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 450px; }
+        input, textarea { padding: 10px; margin: 6px 0; width: 95%; border: 1px solid #ccc; border-radius: 4px; display: block; }
+        button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #0056b3; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .btn-delete { background: #dc3545; }
+        .btn-delete:hover { background: #c82333; }
+        .img-preview { width: 40px; height: 50px; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Dashboard - Book Management</h1>
+
+    <!-- Form -->
+    <div class="form-box">
+        <h3 id="formTitle">Add New Book</h3>
+        <input type="hidden" id="bookId">
+        <input type="text" id="title" placeholder="Book Title" required>
+        <input type="text" id="author" placeholder="Author Name" required>
+        <input type="number" id="price" placeholder="Price (₹)" required>
+        <input type="text" id="image" placeholder="books_images/logo.jpg.png" required>
+        <textarea id="description" placeholder="Book Description" rows="3"></textarea>
+        <button type="button" onclick="saveBook()">Save Book</button>
+    </div>
+
+    <!-- Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="bookTableBody">
+            <tr><td colspan="6" style="text-align:center;">पुस्तके लोड होत आहेत...</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+   // Render च्या ऐवजी Local 5000 पोर्टचा URL टाका:
+    const API_URL = 'http://localhost:5000/api/books';
+
+    // १. पुस्तके टेबलमध्ये दाखवणे
+    async function loadBooks() {
+        try {
+            const res = await fetch(API_URL);
+            const books = await res.json();
+            
+            const tableBody = document.querySelector('tbody');
+            if (!tableBody) return;
+            tableBody.innerHTML = '';
+
+            books.forEach(book => {
+                let imageSrc = book.image ? book.image : 'https://via.placeholder.com/150';
+                if (!imageSrc.startsWith('http') && !imageSrc.startsWith('/')) {
+                    imageSrc = './' + imageSrc;
+                }
+
+                // Edit बटणासाठी सुरक्षित टॅग्स तयार करणे
+                const bookData = JSON.stringify(book).replace(/"/g, '&quot;');
+
+                tableBody.innerHTML += `
+                    <tr>
+                        <td><img src="${imageSrc}" style="width:40px; height:50px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/150'"></td>
+                        <td>${book.title}</td>
+                        <td>${book.author}</td>
+                        <td>₹${book.price}</td>
+                        <td>${book.description || '-'}</td>
+                        <td>
+                            <button onclick="editBook(${bookData})" style="background:#ff9800; color:white; border:none; padding:5px 10px; cursor:pointer; border-radius:4px;">Edit</button>
+                            <button onclick="deleteBook('${book._id}')" style="background:#f44336; color:white; border:none; padding:5px 10px; cursor:pointer; border-radius:4px;">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        } catch (err) {
+            console.error("Error loading books:", err);
+        }
+    }
+
+    // ग्लोबल व्हॅरियबल - कोणता ID एडिट करायचा आहे ते ठेवण्यासाठी
+    let currentEditId = null;
+
+    // २. Edit बटण दाबल्यावर फॉर्ममध्ये जुना डेटा भरणे
+    function editBook(book) {
+        currentEditId = book._id; // ID सेव्ह केला
+        
+        // फॉर्म इनपुट्स शोधा
+        const inputs = document.querySelectorAll('.form-group input, input[type="text"], input[type="number"]');
+        const textarea = document.querySelector('textarea');
+
+        if (inputs.length >= 4) {
+            inputs[0].value = book.title || '';
+            inputs[1].value = book.author || '';
+            inputs[2].value = book.price || '';
+            inputs[3].value = book.image || '';
+        }
+        if (textarea) textarea.value = book.description || '';
+
+        // Save बटणचा मजकूर आणि रंग बदलणे
+        const saveBtn = document.querySelector('.btn-save, button[onclick="saveBook()"], button:not([onclick])');
+        if (saveBtn) {
+            saveBtn.innerText = '✏️ Update Book';
+            saveBtn.style.backgroundColor = '#ff9800';
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // पेज वर स्क्रोल करा
+    }
+
+    // ३. Save / Update बटण लॉजिक
+    async function saveBook() {
+        const inputs = document.querySelectorAll('.form-group input, input[type="text"], input[type="number"]');
+        const textarea = document.querySelector('textarea');
+
+        const title = inputs[0]?.value.trim();
+        const author = inputs[1]?.value.trim();
+        const price = Number(inputs[2]?.value);
+        const image = inputs[3]?.value.trim();
+        const description = textarea?.value.trim() || '';
+
+        if (!title || !author || !price) {
+            alert("कृपया Title, Author आणि Price भरा!");
+            return;
+        }
+
+        const bookPayload = { title, author, price, image, description };
+
+        // जर currentEditId असेल तर PUT (Update) करा, नसेल तर POST (Create) करा
+        const url = currentEditId ? `${API_URL}/${currentEditId}` : API_URL;
+        const method = currentEditId ? 'PUT' : 'POST';
+
+        try {
+            const res = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bookPayload)
+            });
+
+            if (res.ok) {
+                alert(currentEditId ? "✅ Book Updated Successfully!" : "🎉 Book Saved Successfully!");
+                resetForm();
+                loadBooks();
+            } else {
+                const errData = await res.json();
+                alert("❌ Save failed: " + (errData.message || "Something went wrong"));
+            }
+        } catch (err) {
+            console.error("Save Error:", err);
+            alert("Server connection error.");
+        }
+    }
+
+    // ४. Delete बटण
+    async function deleteBook(id) {
+        if (confirm("तुम्हाला नक्की हे पुस्तक डिलीट करायचे आहे का?")) {
+            try {
+                const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    alert("🗑️ Book deleted!");
+                    loadBooks();
+                }
+            } catch (err) {
+                console.error("Delete Error:", err);
+            }
+        }
+    }
+
+    // ५. फॉर्म मूळ स्थितीत आणणे
+    function resetForm() {
+        currentEditId = null;
+        const inputs = document.querySelectorAll('.form-group input, input[type="text"], input[type="number"]');
+        const textarea = document.querySelector('textarea');
+
+        inputs.forEach(input => input.value = '');
+        if (textarea) textarea.value = '';
+
+        const saveBtn = document.querySelector('.btn-save, button[onclick="saveBook()"], button:not([onclick])');
+        if (saveBtn) {
+            saveBtn.innerText = 'Save Book';
+            saveBtn.style.backgroundColor = '#0d6efd';
+        }
+    }
+
+    // HTML मधील [Save Book] बटणाला `saveBook()` अटॅच करणे
+    document.addEventListener("DOMContentLoaded", () => {
+        loadBooks();
+        
+        const saveBtn = document.querySelector('button');
+        if (saveBtn && saveBtn.innerText.includes('Save')) {
+            saveBtn.onclick = saveBook;
+        }
+    });
+</script>
+</body>
+</html>

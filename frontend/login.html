@@ -3,7 +3,21 @@
 <head>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <title> CSS Login Screen Tutorial </title>
+    <title>CSS Login Screen Tutorial</title>
+
+    <style>
+        .admin-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            color: white !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     
@@ -29,81 +43,124 @@
             <p>Please enter your credentials to login.</p>
           </div>
         </div>
-        <!-- आपला लॉगिन फॉर्म -->
+        
+        <!-- लॉगिन फॉर्म -->
         <form class="login-form">
           <input type="email" id="username" placeholder="Email" required />
           <div class="password-box">
-          <input type="password" id="password" placeholder="Password" required />
-          <i class="fa-solid fa-eye" id="togglePassword"></i>
+            <input type="password" id="password" placeholder="Password" required />
+            <i class="fa-solid fa-eye" id="togglePassword"></i>
           </div>
-          <button type="submit">Login</button>
+          
+          <!-- साधे User Login बटण -->
+          <button type="submit" id="userLoginBtn">Login</button>
           <p class="message">Not registered? <a href="Register.html">Create an account</a></p>
+
+          <!-- 🔑 Admin Section (प्रॉपर बटण) -->
+          <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+              <p style="font-size: 13px; color: #666; margin-bottom: 8px;">Are you an Admin?</p>
+              <button type="button" id="adminLoginBtn" class="admin-btn" style="display: block; width: 100%; background-color: #0bb599 !important; color: white !important; padding: 10px; text-align: center;">
+                  🔑 LOGIN AS ADMIN
+              </button>
+          </div>
         </form>
       </div>
     </div>
 
-   
     <script>
-
+    // १. पासवर्ड लपवणे / दाखवणे (Show/Hide Password)
     const password = document.getElementById("password");
-const togglePassword = document.getElementById("togglePassword");
+    const togglePassword = document.getElementById("togglePassword");
 
-togglePassword.addEventListener("click", () => {
-
-    if(password.type === "password"){
-        password.type = "text";
-        togglePassword.classList.remove("fa-eye");
-        togglePassword.classList.add("fa-eye-slash");
+    if (togglePassword) {
+        togglePassword.addEventListener("click", () => {
+            if (password.type === "password") {
+                password.type = "text";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            }
+        });
     }
-    else{
-        password.type = "password";
-        togglePassword.classList.remove("fa-eye-slash");
-        togglePassword.classList.add("fa-eye");
+
+    // २. लॉगिन API कॉल करण्यासाठी कॉमन फाईल/फंक्शन
+    async function performLogin(email, passwordInput) {
+        const response = await fetch('https://ebook-website-readers-choice.onrender.com/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: passwordInput })
+        });
+        return await response.json();
     }
 
-});
-
+    // ३. नॉर्मल युझर लॉगिन लॉजिक (साधे Login बटण)
     const loginForm = document.querySelector('.login-form');
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // पेज आपोआप रिफ्रेश होऊ नये म्हणून
+            e.preventDefault();
 
-            // आयडीवरून अचूक व्हॅल्यू मिळवणे
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
+            const email = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
 
-            // बॅकएंड ईमेल मागतो, म्हणून युझरनेमला ईमेल फॉरमॅटमध्ये बदलणे
-            const email = username.includes('@') ? username : `${username}@gmail.com`;
+            // जर साध्या लॉगिनमधून Admin ने लॉगिन करण्याचा प्रयत्न केला तर ब्लॉक करा
+            if (email.toLowerCase() === 'admin@gmail.com') {
+                alert("⚠️ Admin login is not allowed here! Please click on 'LOGIN AS ADMIN' button below.");
+                return;
+            }
 
             try {
-                // एक्सप्रेस बॅकएंडच्या Login API ला कॉल करणे
-                const response = await fetch('https://ebook-website-readers-choice.onrender.com/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
+                const data = await performLogin(email, pass);
 
-                const data = await response.json();
-
-                // जर बॅकएंडने सांगितलं की लॉगिन यशस्वी झालं आहे:
                 if (data.success) {
-                    alert("🔓 Login successful! You are now connected! 🎉");
-                    
-                    // युझरचा डेटा ब्राउझरच्या मेमरीमध्ये सेव्ह करणे
+                    alert("🔓 User Login successful!");
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    
-                    // लॉगिन झाल्यावर थेट मुख्य होम पेजवर जाणे
-                   window.location.href = 'index.html';
+                    window.location.href = 'index.html'; // युझरला Home पेजवर पाठवा
                 } else {
-                    // पासवर्ड किंवा युझरनेम चुकीचा असेल तर
                     alert("❌ Login failed: " + data.message);
                 }
             } catch (error) {
                 console.error("Connection Error:", error);
-                alert("😥 Could not connect to the server. Please check that your Node.js server is running.");
+                alert("Server error. Please check your backend.");
+            }
+        });
+    }
+
+    // ४. 🔑 Admin Login बटन क्लिक लॉजिक
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+
+    if (adminLoginBtn) {
+        adminLoginBtn.addEventListener('click', async () => {
+            const email = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+
+            if (!email || !pass) {
+                alert("Please enter Email and Password first!");
+                return;
+            }
+
+            // फक्त admin@gmail.com लाच या बटणावरून परवानगी दिली जाईल
+            if (email.toLowerCase() !== 'admin@gmail.com') {
+                alert("❌ Only Admin email (admin@gmail.com) can login using this button!");
+                return;
+            }
+
+            try {
+                const data = await performLogin(email, pass);
+
+                if (data.success) {
+                    alert("🔑 Welcome Admin! Redirecting to Admin Panel...");
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'admin.html'; // ॲडमिनला Admin Panel वर पाठवा
+                } else {
+                    alert("❌ Admin Login failed: " + data.message);
+                }
+            } catch (error) {
+                console.error("Connection Error:", error);
+                alert("Server error. Please check your backend.");
             }
         });
     }

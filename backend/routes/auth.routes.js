@@ -71,4 +71,49 @@ router.post("/login", async (req, res) => {
     }
 });
 
+
+// LOGIN API
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({ success: false, message: "Please enter email and password!" });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ success: false, message: "Incorrect email or password!" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ success: false, message: "Invalid email or password!" });
+        }
+
+        // 🎯 इथे तुमचा Admin ईमेल अचूक टाका (उदा. तुमचा ईमेल किंवा फोन नंबर असलेला ईमेल)
+        // लक्षात ठेवा: लहान/मोठी अक्षरे किंवा space मधील फरक टाळण्यासाठी lowerCase वापरा
+        const adminEmail = " admin@gmail.com ".trim().toLowerCase(); 
+        
+        let role = user.role;
+        if (user.email.trim().toLowerCase() === adminEmail) {
+            role = "admin";
+        }
+
+        res.status(200).json({ 
+            success: true, 
+            message: "लॉगिन यशस्वी झाले! 🔓", 
+            user: { 
+                id: user._id, 
+                username: user.username, 
+                email: user.email,
+                role: role || "user" // ✅ इथे Role अचूक पाठवला जाईल
+            } 
+        });
+
+    } catch (error) {
+        res.status(500).json({ success: false, message: "An error occurred", error: error.message });
+    }
+});
+
 export default router;
